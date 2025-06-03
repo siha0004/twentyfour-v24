@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+const { data, filters, variant = "image" } = Astro.props;
+const { thumbnail_img, thumbnail_video, slug, name, services } = data;
+
+const blurStyle = "col-start-1 row-start-1 backdrop-blur-xs rounded-small";
+const videoStyle = " mx-[5%] self-center col-start-1 row-start-1 z-2 rounded-small";
+
+let variantClass = "hidden";
+
+if (variant === "video") {
+  variantClass = "block";
+}
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
+if (!images[thumbnail_img]) throw new Error(`"${thumbnail_img}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<li data-services={filters} class="grid content-start relative case-card min-w-[163px]">
+  <article>
+    <header class="grid grid-cols-1 customcursor">
+      <div class="aspect-square col-start-1 row-start-1 col-span-1 rounded-small">
+        <Image src={images[thumbnail_img]()} alt={`Thumbnail til ${name} showcase`} class="object-cover aspect-square rounded-small" />
+      </div>
+      <div class:list={[blurStyle, variantClass]}></div>
+      <div class:list={[videoStyle, variantClass]}>
+        <video muted autoplay loop class="rounded-small w-full h-auto" src={thumbnail_video}></video>
+      </div>
+    </header>
+    <footer class="grid gap-1 mt-4">
+      <h3 class="text-heading-small text-text-primary z-5">
+        <a href={`cases/${slug}`} class="after:content-[''] after:absolute after:inset-0 customcursor"> {name}</a>
+      </h3>
+      <ul class="flex flex-wrap gap-2 text-body-tiny">
+        {
+          services.map((service: JSON) => {
+            return <li class="capitalize text-text-primary">{service}</li>;
+          })
+        }
+      </ul>
+    </footer>
+  </article>
+</li>

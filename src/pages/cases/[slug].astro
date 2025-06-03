@@ -1,0 +1,48 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import CaseGallery from "../../components/organisms/CaseGallery.astro";
+import CaseHero from "../../components/organisms/CaseHero.astro";
+import CaseMoreCases from "../../components/organisms/CaseMoreCases.astro";
+import CaseProcess from "../../components/organisms/CaseProcess.astro";
+import CaseResult from "../../components/organisms/CaseResult.astro";
+import CaseTestimonial from "../../components/organisms/CaseTestimonial.astro";
+import Hero from "../../components/organisms/Hero.astro";
+
+// Laver statiske stier til hvert element i databasen
+export async function getStaticPaths() {
+  const url = import.meta.env.CASES_URL;
+  const key = import.meta.env.CASES_KEY;
+
+  // Henter dataen med fetch
+  const data = await fetch(url, {
+    method: "GET",
+    headers: {
+      apikey: key,
+    },
+  }).then((res) => res.json());
+
+  //Benytter map til at lave en underside for hvert element i databasen
+  return data.map((elm) => {
+    return {
+      // Bruger slugget fra database (elm.slug) og navngiver filen dét
+      // Det første 'slug' henviser til det slug, som er i mit filnavn (som er [slug].astro)
+      // Det næste 'slug' henviser til en kolonne i databasen
+      params: { slug: elm.slug },
+      props: { caseData: elm },
+    };
+  });
+}
+
+// Definere en prop, som dataen der er fetchet
+const { caseData } = Astro.props;
+const { name, hero, result, quote, grid, grid_type, process } = caseData;
+---
+
+<MainLayout title="Services | Twentyfour">
+  {hero ? <CaseHero data={hero} name={name} /> : <Hero button="true" variant="default" title="Der Bygges" text="Denne side er endnu ikke bygget færdig - men der arbejdes på sagen." />}
+  {result && <CaseResult data={result} name={name} />}
+  {quote && <CaseTestimonial data={quote} />}
+  {quote && <CaseProcess data={process} name={name} />}
+  {grid && <CaseGallery data={grid} grid={grid_type} name={name} />}
+  {hero && <CaseMoreCases />}
+</MainLayout>

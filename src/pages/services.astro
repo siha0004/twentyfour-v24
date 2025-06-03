@@ -3,7 +3,7 @@ import Hero from "../components/organisms/Hero.astro";
 import ScrollingContainer from "../components/organisms/ScrollingContainer.astro";
 import CardServices from "../components/molecules/CardServices.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-// import SectionCases from "../components/organisms/SectionCases.astro";
+import SectionCases from "../components/organisms/SectionCases.astro";
 
 import services from "../data/services.json";
 
@@ -44,5 +44,5 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
     </article>
     <ScrollingContainer />
   </section>
-  <!-- <section class="py-8 lg:pb-32"><SectionCases data={sortedData} /></section> -->
+  <section class="py-8 lg:pb-32"><SectionCases data={sortedData} /></section>
 </MainLayout>

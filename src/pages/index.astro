@@ -5,7 +5,7 @@ import ClientLogoWrapper from "../components/organisms/ClientLogoWrapper.astro";
 import Link from "../components/atoms/Link.astro";
 import CardServices from "../components/molecules/CardServices.astro";
 import IndexHero from "../components/organisms/IndexHero.astro";
-// import SectionCases from "../components/organisms/SectionCases.astro";
+import SectionCases from "../components/organisms/SectionCases.astro";
 import AboutGallery from "../components/organisms/AboutGallery.astro";
 
 import services from "../data/services.json";
@@ -37,7 +37,7 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
   </section>
 
   <section id="cases" class="section-main full-bleed border-t border-t-border-secondary">
-    <!-- <SectionCases data={sortedData} /> -->
+    <SectionCases data={sortedData} />
   </section>
 
   <section id="services" class="section-main grid lg:grid-cols-[4fr_8fr] lg:gap-20 relative">

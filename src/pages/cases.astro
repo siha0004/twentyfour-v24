@@ -1,0 +1,173 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/organisms/Hero.astro";
+import CardCases from "../components/molecules/CardCases.astro";
+
+import Filter from "../components/atoms/Filter.astro";
+import { Icon } from "astro-icon/components";
+
+// Fetcher data fra databasen og ligger i konstanten 'data'
+const url = import.meta.env.CASES_URL;
+const key = import.meta.env.CASES_KEY;
+
+const caseData = await fetch(url, {
+  method: "GET",
+  headers: {
+    apikey: key,
+  },
+}).then((res) => res.json());
+
+const sortedData = [...caseData].sort((a, b) => a.name.localeCompare(b.name, "da"));
+---
+
+<MainLayout title="Cases | Twentyfour">
+  <Hero variant="default" title="Cases" text="I mere end 10 år har vi hjulpet virksomheder med at løse digitale udfordringer – store som små. Vi elsker at finde løsninger, der faktisk virker – også når tingene bliver komplekse. " />
+  <section class="section-main grid gap-10 relative">
+    <header class="flex justify-between items-start sticky top-24 self-start z-20">
+      <!-- FILTER -->
+      <div id="filters" class="py-2 px-6 glass rounded-large border-2 border-border-primary w-fit grid gap-2 justify-items-start lg:flex lg:flex-row lg:gap-4 lg:rounded-full">
+        <!-- Toggle-knap til mobil -->
+        <button id="toggleFilters" class="lg:hidden font-medium text-text-primary">Filtre</button>
+
+        <!-- Selve filter-knapperne -->
+        <div id="filterOptions" class="flex-col lg:gap-4 hidden lg:!flex lg:flex-row mt-2 lg:mt-0">
+          <Filter filter="design" />
+          <Filter filter="webudvikling" />
+          <Filter filter="integration" />
+          <Filter filter="vedligeholdelse" />
+          <button data-clear class="text-text-secondary capitalize cursor-pointer px-1 hover:border-b-2 hover:border-b-border-primaryy border-b-border-primary focus-visible:outline-1 focus-visible:rounded-small disabled:text-text-secondary">Ryd</button>
+        </div>
+      </div>
+
+      <!-- SEARCH BAR -->
+      <div id="searchContainer" class="flex items-center glass max-w-3xs px-4 py-2 border-2 border-border-primary rounded-full transition-all duration-300 lg:max-w-full lg:flex-row" data-search-container>
+        <button id="toggleSearch" class="lg:hidden">
+          <Icon name="search" class="text-body-xlarge" />
+        </button>
+
+        <!-- Input skjules på mobil og vises når aktiv -->
+        <input type="search" id="search" placeholder="Søg..." class="hidden placeholder:text-text-secondary lg:block px-2 focus:outline-none focus:ring-0 w-full" data-search-input />
+      </div>
+    </header>
+    <ul class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-11 items-start">
+      {sortedData.map((oneCase) => <CardCases filters={oneCase.services.join(",")} data={oneCase} variant={oneCase.thumbnail_type} />)}
+    </ul>
+  </section>
+</MainLayout>
+
+<script>
+  const filterButtons = document.querySelectorAll("[data-filter]");
+  const clearButton = document.querySelector("[data-clear]");
+  const cards = document.querySelectorAll(".case-card");
+  const searchInput = document.getElementById("search");
+  const toggleButton = document.getElementById("toggleFilters");
+  const filterOptions = document.getElementById("filterOptions");
+  const searchToggle = document.getElementById("toggleSearch");
+  const searchContainer = document.querySelector("[data-search-container]");
+  const searchInputField = document.querySelector("[data-search-input]");
+
+  let activeFilters = [];
+
+  // Toggle filtre
+  toggleButton?.addEventListener("click", () => {
+    const wasHidden = filterOptions.classList.contains("hidden");
+    filterOptions.classList.toggle("hidden");
+    toggleButton.textContent = wasHidden ? "Luk filtre" : "Filtre";
+
+    // Luk søgning hvis den var åben
+    if (!searchInputField.classList.contains("hidden")) {
+      searchInputField.classList.add("hidden");
+    }
+  });
+
+  // Toggle søgefelt
+  searchToggle?.addEventListener("click", () => {
+    const wasHidden = searchInputField.classList.contains("hidden");
+
+    searchInputField.classList.toggle("hidden");
+
+    // Focus søgefelt hvis det blev åbnet
+    if (wasHidden) {
+      searchInputField.focus();
+    }
+
+    // Luk filtre hvis de var åbne
+    if (!filterOptions.classList.contains("hidden")) {
+      filterOptions.classList.add("hidden");
+      toggleButton.textContent = "Filtre";
+    }
+  });
+
+  function updateView() {
+    const searchTerm = searchInput.value.trim().toLowerCase();
+
+    // Opdater hvilke cards vises
+    cards.forEach((card) => {
+      const services = card.getAttribute("data-services").split(",");
+      const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
+
+      const matchesFilter = activeFilters.length === 0 || activeFilters.some((f) => services.includes(f));
+      const matchesSearch = searchTerm === "" || title.includes(searchTerm);
+
+      const shouldShow = matchesFilter && matchesSearch;
+
+      if (shouldShow) {
+        card.classList.remove("hidden");
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+
+    // Opdater knappernes aktive styling
+    filterButtons.forEach((button) => {
+      const filter = button.getAttribute("data-filter");
+      const iconSpan = button.querySelector("[data-icon]");
+
+      if (activeFilters.includes(filter)) {
+        button.classList.add("font-medium");
+        iconSpan?.classList.remove("opacity-0");
+        iconSpan?.classList.add("opacity-100");
+      } else {
+        button.classList.remove("font-medium");
+        iconSpan?.classList.add("opacity-0");
+        iconSpan?.classList.remove("opacity-100");
+      }
+    });
+
+    // Opdater "Ryd filtre"-knap
+    if (activeFilters.length > 0) {
+      clearButton.classList.remove("opacity-50", "pointer-events-none");
+    } else {
+      clearButton.classList.add("opacity-50", "pointer-events-none");
+    }
+  }
+
+  // Klik på filterknapper
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.getAttribute("data-filter");
+
+      if (activeFilters.includes(filter)) {
+        activeFilters = activeFilters.filter((f) => f !== filter);
+      } else {
+        activeFilters.push(filter);
+      }
+
+      updateView();
+    });
+  });
+
+  // Ryd filtre
+  clearButton.addEventListener("click", () => {
+    activeFilters = [];
+    updateView();
+  });
+
+  // Input i søgefelt
+  searchInput.addEventListener("input", () => {
+    updateView();
+  });
+
+  // Initiel visning
+  updateView();
+</script>

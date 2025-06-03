@@ -1,0 +1,23 @@
+---
+import CardCases from "../molecules/CardCases.astro";
+import cases from "../../data/cases.json";
+import Link from "../atoms/Link.astro";
+const { data } = Astro.props;
+---
+
+<section class="section-main grid lg:grid-cols-[5fr_7fr] gap-6">
+  <article class="">
+    <h1 class="text-heading-tagline text-text-primary pb-2">Er du nysgerrig efter mere?</h1>
+    <h2 class="text-heading-small text-text-primary pb-10">Dyk ned i to udvalgte cases – og har du lyst til endnu mere, kan du altid gå på opdagelse i hele vores case-arkiv.</h2>
+    <Link href="" variant="ButtonSecondary" size="large" ikon="ButtonSecondary">Se alle cases</Link>
+  </article>
+  <ul class="grid grid-cols-[4fr_3fr] gap-6">
+    {
+      cases.map((oneCase, i) => {
+        if (i < 2) {
+          return <CardCases data={oneCase} size="medium" />;
+        }
+      })
+    }
+  </ul>
+</section>

@@ -1,0 +1,21 @@
+---
+import cases from "../../data/cases.json";
+import CardCases from "../molecules/CardCases.astro";
+import Link from "../atoms/Link.astro";
+
+const { data } = Astro.props;
+---
+
+<article class="flex flex-wrap justify-between items-center gap-6 pb-6">
+  <h1 class="text-heading-large text-text-primary">Cases</h1>
+  <Link href="" variant="ButtonSecondary" size="large" ikon="ButtonSecondary">Se alle cases</Link>
+</article>
+<ul class="pb-4 sm:full-bleed col-[full] gap-6 overflow-x-auto px-[max(1rem,_50%_-_var(--content-width)_/_2)] snap-x snap-mandatory grid grid-cols-[2fr_2fr_2fr] lg:grid-cols-[3fr_5fr_4fr]">
+  {
+    data.map((oneCase, i) => {
+      if (i < 3) {
+        return <CardCases data={oneCase} size="medium" variant={oneCase.thumbnail_type} />;
+      }
+    })
+  }
+</ul>
