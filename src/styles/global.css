@@ -88,6 +88,7 @@
   /* Background color */
   --color-background-primary: var(--color-cream-10);
   --color-background-secondary: var(--color-cream-20);
+  --color-background-tertiery: var(--color-cream-60);
   --color-background-glass: var(--color-cream-35);
   --color-background-succes: var(--color-green-10);
   --color-background-warning: var(--color-red-10);
@@ -137,6 +138,7 @@
     /* Background color */
     --color-background-primary: var(--color-licorice-90);
     --color-background-secondary: var(--color-licorice-75);
+    --color-background-tertiery: var(--color-licorice-50);
     --color-background-glass: var(--color-licorice-75);
     --color-background-succes: var(--color-green-75);
     --color-background-warning: var(--color-red-75);
