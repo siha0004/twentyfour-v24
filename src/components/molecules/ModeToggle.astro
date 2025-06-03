@@ -20,6 +20,7 @@ import ToggleButton from "../atoms/ToggleButton.astro";
 
     const setTheme = (theme) => {
       document.body.dataset.theme = theme;
+      localStorage.setItem("theme", theme);
 
       if (theme === "light") {
         slider.style.transform = "translateX(0)";
@@ -27,6 +28,13 @@ import ToggleButton from "../atoms/ToggleButton.astro";
         slider.style.transform = "translateX(48px)";
       }
     };
+
+    // Tjek localStorage, ellers brug system-indstilling
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+    setTheme(initialTheme);
 
     light?.addEventListener("click", () => setTheme("light"));
     dark?.addEventListener("click", () => setTheme("dark"));
