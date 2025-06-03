@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@theme {
+  /************************** PRIMITIVES *****************************/
+
+  /* Fonts */
+  --font-*: initial;
+  --font-sans: "Poppins", system-ui, sans-serif;
+
+  /* Colors */
+
+  --color-*: initial;
+  --color-licorice-10: #69695d;
+  --color-licorice-25: #505045;
+  --color-licorice-50: #353531;
+  --color-licorice-75: #252525;
+  --color-licorice-90: #181818;
+
+  --color-cream-10: #fffeec;
+  --color-cream-20: #f4f3db;
+  --color-cream-35: #dfdec7;
+  --color-cream-60: #cdccb4;
+  --color-cream-75: #bdbca1;
+  --color-cream-90: #9b9a80;
+
+  --color-raspberry-10: #fde6e7;
+  --color-raspberry-20: #f6abb2;
+  --color-raspberry-35: #f07c8a;
+  --color-raspberry-50: #e33c54;
+  --color-raspberry-65: #b02040;
+  --color-raspberry-80: #7f1c38;
+  --color-raspberry-90: #460b19;
+
+  --color-lime-10: #f1ffc4;
+  --color-lime-15: #e3ff8f;
+  --color-lime-30: #ccfe50;
+  --color-lime-45: #b2ff18;
+  --color-lime-60: #95e602;
+  --color-lime-75: #72b803;
+  --color-lime-90: #456d06;
+
+  /* --color-yellow-10: ;
+  --color-yellow-25: ;
+  --color-yellow-50: ;
+  --color-yellow-75: ;
+  --color-yellow-90: ;
+
+  --color-blue-10: ;
+  --color-blue-25: ;
+  --color-blue-50: ;
+  --color-blue-75: ;
+  --color-blue-90: ; */
+
+  /****************************** TOKENS - SIZES ******************************/
+  /* Radius */
+  --radius-*: initial;
+  --radius-none: 0rem;
+  --radius-small: 0.25rem;
+  --radius-medium: 1rem;
+  --radius-large: 1.5rem;
+  --radius-full: 100rem;
+
+  /* Text */
+  /*Clamp generator: https://utopia.fyi/clamp/calculator?a=470,1400,14%E2%80%9416 */
+
+  --text-*: initial;
+  --text-body-tiny: clamp(0.625rem, 0.5618rem + 0.2151vw, 0.75rem);
+  --text-body-small: clamp(0.75rem, 0.6868rem + 0.2151vw, 0.875rem);
+  --text-body-base: clamp(0.875rem, 0.8118rem + 0.2151vw, 1rem);
+  --text-body-large: clamp(1rem, 0.9368rem + 0.2151vw, 1.125rem);
+  --text-body-xlarge: clamp(1.25rem, 1.1237rem + 0.4301vw, 1.5rem);
+
+  --text-heading-xsmall: clamp(0.875rem, 0.8118rem + 0.2151vw, 1rem);
+  --text-heading-small: clamp(1.25rem, 1.1237rem + 0.4301vw, 1.5rem);
+  --text-heading-medium: clamp(1.5rem, 1.2473rem + 0.8602vw, 2rem);
+  --text-heading-large: clamp(1.75rem, 1.1183rem + 2.1505vw, 3rem);
+  --text-heading-xlarge: clamp(3rem, 1.9565rem + 5.2174vw, 6rem);
+  --text-heading-huge: clamp(3.5rem, 0.587rem + 14.5652vw, 11.875rem);
+
+  /* Grafikker */
+  /* Clamp generator https://utopia.fyi/clamp/calculator?a=390,1728,32—48 */
+
+  --text-graphic-large: clamp(7.5rem, 4.8038rem + 11.0613vw, 16.75rem);
+  --text-graphic-medium: clamp(4.5rem, 3.1155rem + 5.6801vw, 9.25rem);
+  --text-graphic-small: clamp(2rem, 1.7085rem + 1.1958vw, 3rem);
+  /****************************** TOKENS - COLORS******************************/
+
+  /* Background color */
+  --color-background-primary: var(--color-cream-10);
+  --color-background-secondary: var(--color-cream-20);
+  --color-background-glass: var(--color-cream-35);
+  --color-background-succes: var(--color-green-10);
+  --color-background-warning: var(--color-red-10);
+
+  /* Border color */
+  --color-border-primary: var(--color-cream-60);
+  --color-border-secondary: var(--color-cream-20);
+  --color-border-accent: var(--color-raspberry-50);
+  --color-border-succes: var(--color-green-50);
+  --color-border-warning: var(--color-red-50);
+
+  /* Text color */
+  --color-text-primary: var(--color-licorice-90);
+  --color-text-secondary: var(--color-licorice-10);
+  --color-text-alternate: var(--color-cream-10);
+  --color-text-succes: var(--color-green-75);
+  --color-text-warning: var(--color-red-75);
+
+  /* Link color */
+  --color-link-text: var(--color-licorice-90);
+  --color-link-text-hover: var(--color-licorice-10);
+  --color-link-text-visited: var(--color-licorice-10);
+
+  /* Button Primary color */
+  --color-button-primary-text: var(--color-cream-10);
+  --color-button-primary-background: var(--color-raspberry-65);
+  --color-button-primary-background-hover: var(--color-raspberry-65);
+  --color-button-primary-background-pressed: var(--color-raspberry-80);
+
+  /* Button Primary color */
+  --color-button-secondary-text: var(--color-licorice-90);
+  --color-button-secondary-border: var(--color-cream-60);
+  --color-button-secondary-background: var(--color-cream-20);
+  --color-button-secondary-background-hover: var(--color-cream-10);
+  --color-button-secondary-background-pressed: var(--color-cream-35);
+
+  /* Brand color */
+  --color-brand-raspberry: var(--color-raspberry-50);
+  --color-brand-lime: var(--color-lime-45);
+  --color-brand-cream: var(--color-cream-10);
+  --color-brand-licorice: var(--color-licorice-90);
+}
+
+/* Custom cursor */
+@layer utilities {
+  [data-theme="dark"] {
+    /* Background color */
+    --color-background-primary: var(--color-licorice-90);
+    --color-background-secondary: var(--color-licorice-75);
+    --color-background-glass: var(--color-licorice-75);
+    --color-background-succes: var(--color-green-75);
+    --color-background-warning: var(--color-red-75);
+
+    /* Border color */
+    --color-border-primary: var(--color-licorice-25);
+    --color-border-secondary: var(--color-licorice-75);
+    --color-border-accent: var(--color-lime-45);
+    --color-border-succes: var(--color-green-50);
+    --color-border-warning: var(--color-red-50);
+
+    /* Text color */
+    --color-text-primary: var(--color-cream-10);
+    --color-text-secondary: var(--color-cream-35);
+    --color-text-alternate: var(--color-licorice-90);
+    --color-text-succes: var(--color-green-10);
+    --color-text-warning: var(--color-red-10);
+
+    /* Link color */
+    --color-link-text: var(--color-cream-10);
+    --color-link-text-hover: var(--color-cream-35);
+    --color-link-text-visited: var(--color-cream-60);
+
+    /* Button Primary color */
+    --color-button-primary-text: var(--color-licorice-90);
+    --color-button-primary-background: var(--color-lime-45);
+    --color-button-primary-background-hover: var(--color-lime-60);
+    --color-button-primary-background-pressed: var(--color-lime-75);
+
+    /* Button Primary color */
+    --color-button-secondary-text: var(--color-cream-10);
+    --color-button-secondary-border: var(--color-licorice-25);
+    --color-button-secondary-background: var(--color-licorice-75);
+    --color-button-secondary-background-hover: var(--color-licorice-50);
+    --color-button-secondary-background-pressed: var(--color-licorice-90);
+  }
+
+  .heading-display {
+    @apply text-heading-huge leading-tight font-normal;
+  }
+  .heading-xlarge {
+    @apply text-heading-xlarge leading-tight font-bold;
+  }
+  .heading-large {
+    @apply text-heading-large leading-tight font-normal;
+  }
+  .heading-medium {
+    @apply text-heading-medium leading-tight font-normal;
+  }
+  .heading-small {
+    @apply text-heading-small leading-tight font-medium;
+  }
+  .heading-tagline {
+    @apply text-heading-xsmall leading-tight font-medium text-text-secondary;
+  }
+
+  .glass {
+    @apply bg-background-glass/50 backdrop-blur-md;
+  }
+
+  .section-main {
+    @apply py-16 sm:py-24 lg:py-32 border-b border-b-border-secondary;
+  }
+
+  .large {
+    width: clamp(7.5rem, 4.8038rem + 11.0613vw, 16.75rem);
+  }
+  .medium {
+    width: clamp(4.5rem, 3.1155rem + 5.6801vw, 9.25rem);
+  }
+  .small {
+    width: clamp(2rem, 1.7085rem + 1.1958vw, 3rem);
+  }
+
+  .customcursor {
+    cursor: url("/CustomCursorCase.svg"), pointer;
+  }
+}
+
+/* Text styles */
+@layer components {
+  body {
+    --content-width: 1400px;
+
+    font-family: var(--font-sans);
+    background-color: var(--color-background-primary);
+    display: grid;
+    grid-template-columns: [full-start] minmax(1rem, 1fr) [content-start] minmax(0, var(--content-width)) [content-end] minmax(1rem, 1fr) [full-end];
+    grid-template-rows: auto 1fr auto;
+    column-gap: 0;
+    align-content: start;
+
+    > :is(header, main, footer) {
+      grid-column: full;
+      display: grid;
+      grid-template-columns: subgrid;
+      align-content: start;
+
+      > * {
+        grid-column: content;
+      }
+    }
+  }
+
+  .full-bleed {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: full;
+    gap: inherit;
+    align-content: start;
+
+    > * {
+      grid-column: content;
+    }
+  }
+
+  p {
+    max-width: 65ch;
+    text-wrap: pretty;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+}
