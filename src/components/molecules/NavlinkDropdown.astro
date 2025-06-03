@@ -1,0 +1,70 @@
+---
+import Navlink from "../atoms/Navlink.astro";
+
+const { variant, label } = Astro.props;
+
+const optionsMap = {
+  services: ["design", "webudvikling", "intergration", "vedligeholdelse"],
+  about: ["team", "karriere", "historie"],
+};
+
+const options = optionsMap[variant] || ["404"];
+---
+
+<div class="relative" id={`${variant}-wrapper`}>
+  <Navlink href=`/${variant}` variant="dropdown">{label}</Navlink>
+
+  <!-- Dropdown shown on hover -->
+  <div id={`${variant}-dropdown`} class="absolute grid gap-4 p-5 mt-9 w-80 bg-background-secondary border border-border-primary rounded-small invisible transition duration-200 z-20">
+    {
+      options.map((option: object) => {
+        return (
+          <Navlink href="build" variant="sub">
+            {option}
+          </Navlink>
+        );
+      })
+    }
+  </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll("[id$='-wrapper']").forEach((wrapper) => {
+    const variant = wrapper.id.replace("-wrapper", "");
+    const dropdown = document.getElementById(`${variant}-dropdown`);
+
+    let dropdownVisible = false;
+
+    // Vis dropdown
+    function showDropdown() {
+      dropdown.classList.remove("invisible", "opacity-0");
+      dropdown.classList.add("visible", "opacity-100");
+      dropdownVisible = true;
+    }
+
+    // Skjul dropdown
+    function hideDropdown() {
+      dropdown.classList.remove("visible", "opacity-100");
+      dropdown.classList.add("invisible", "opacity-0");
+      dropdownVisible = false;
+    }
+
+    wrapper.addEventListener("mouseenter", showDropdown);
+    wrapper.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (!wrapper.matches(":hover") && !dropdown.matches(":hover")) {
+          hideDropdown();
+        }
+      }, 100);
+    });
+
+    dropdown.addEventListener("mouseenter", showDropdown);
+    dropdown.addEventListener("mouseleave", () => {
+      setTimeout(() => {
+        if (!wrapper.matches(":hover") && !dropdown.matches(":hover")) {
+          hideDropdown();
+        }
+      }, 100);
+    });
+  });
+</script>

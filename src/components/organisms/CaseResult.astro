@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+
+const { name, data } = Astro.props;
+
+console.log(data);
+
+const heading = data.find((item) => item.heading)?.heading;
+const text = data.find((item) => item.text)?.text;
+const image = data.find((item) => item.image)?.image;
+const image2 = data.find((item) => item.image2)?.image2;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
+if (!images[image]) throw new Error(`"${image}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+if (!images[image2]) throw new Error(`"${image2}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<section class="section-main grid md:grid-cols-2 gap-6 md:gap-12 relative">
+  <article class="lg:sticky lg:top-32 lg:self-start">
+    <h2 class="heading-tagline">Resultatet</h2>
+    <p class="heading-small text-text-primary mb-3">{heading}</p>
+    <p class="text-text-secondary">{text}</p>
+  </article>
+  <div class="grid gap-3 md:gap-8 @container">
+    <div class="bg-background-secondary px-7 py-4 @sm:px-9 @sm:py-6 @md:px-14 @md:py-8 rounded-small">
+      <Image src={image} width={1920} height={1080} alt={`Billede af løsning til ${name} website`} class="rounded-small" />
+    </div>
+    <div class="bg-background-secondary px-7 py-4 @sm:px-9 @sm:py-6 @md:px-14 @md:py-8 rounded-small">
+      <Image src={image2} width={1920} height={1080} alt={`Billede af løsning leveret til ${name}`} class="rounded-small" />
+    </div>
+  </div>
+</section>

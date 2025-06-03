@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+
+const { name, grid, data } = Astro.props;
+
+let redStyling;
+let blueStyling;
+let yellowStyling;
+let greenStyling;
+
+if (grid == "1") {
+  redStyling = "col-start-2 col-span-5 row-span-7";
+  blueStyling = "col-start-7 col-span-5 row-start-2 row-span-4";
+  yellowStyling = "aspect-square col-start-7 col-span-3 row-start-6 row-span-3";
+  greenStyling = "hidden";
+} else if (grid == "2") {
+  blueStyling = "col-span-8 row-start-1 row-span-4";
+  redStyling = "col-start-9 col-span-4 row-start-3 row-span-5";
+  yellowStyling = "col-start-2 col-span-2 row-start-5 row-span-2";
+  greenStyling = "col-start-4 col-span-2 row-start-5 row-span-2";
+} else if (grid == "3") {
+  redStyling = "col-start-2 col-span-3 row-start-2 row-span-6";
+  blueStyling = "col-start-5 col-span-7 row-span-5";
+  yellowStyling = "col-start-5 col-span-3 row-start-6 row-span-3";
+  greenStyling = "hidden";
+}
+
+const img1 = data.find((item) => item.img1)?.img1;
+const img2 = data.find((item) => item.img2)?.img2;
+const img3 = data.find((item) => item.img3)?.img3;
+const img4 = data.find((item) => item.img4)?.img4;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
+if (!images[img1]) throw new Error(`"${img1}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+if (!images[img2]) throw new Error(`"${img2}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+if (!images[img3]) throw new Error(`"${img3}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+if (!images[img4]) throw new Error(`"${img4}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<section class="section-main grid gap-3 sm:grid-cols-12">
+  <div id="blue" class="rounded-small" class:list={[blueStyling]}>
+    <Image src={img1} width={1920} height={1080} alt={`Billede af ${name} mockup`} class="rounded-small object-cover" />
+  </div>
+  <div id="red" class="rounded-small" class:list={[redStyling]}>
+    <Image src={img2} width={1920} height={1080} alt={`Billede af ${name} mock up`} class="rounded-small object-cover" />
+  </div>
+  <div id="yellow" class="rounded-small" class:list={[yellowStyling]}>
+    <Image src={img3} width={1920} height={1080} alt={`Billede af ${name} designvalg`} class="rounded-small object-cover" />
+  </div>
+  <div id="green" class="rounded-small" class:list={[greenStyling]}>
+    <Image src={img4} width={1920} height={1080} alt={`Billede af et udpluk fra ${name} designsystem`} class="rounded-small object-cover" />
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import FormInput from "../atoms/FormInput.astro";
+import FormTextarea from "../atoms/FormTextarea.astro";
+import Button from "../atoms/Button.astro";
+---
+
+<form action="" id="messageForm" class="grid max-w-xl bg-background-primary rounded-large content-start w-full sm:-order-1">
+  <div class="p-4 flex items-center gap-5 border-b-2 border-border-primary">
+    <p class="text-text-primary">Til:</p>
+    <p class="text-text-primary bg-background-secondary rounded-full px-3 py-1 flex items-center gap-2 before:content-[' '] before:block before:w-3.5 before:h-3.5 before:bg-lime-60 before:rounded-full">Twentyfour</p>
+  </div>
+  <FormInput type="text" name="name" label="Name" required />
+  <FormInput type="email" name="email" label="E-mail" required />
+  <FormTextarea name="message" label="Skriv os en besked" />
+  <footer class="p-4 flex justify-end">
+    <Button variant="secondary" color="secondaryColor" iconPosition="right" icon="arrow-right" size="base">Send</Button>
+  </footer>
+</form>

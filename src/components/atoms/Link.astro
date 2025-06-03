@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { href = "#", target = "_self", variant = "ButtonPrimary", size = "base", icon = "arrow-right", iconPosition = "right" } = Astro.props;
+
+const linkStyling = "inline-flex items-center gap-4 rounded-full text-body-base";
+
+const variantClasses = {
+  ButtonPrimary: "text-button-primary-text bg-button-primary-background hover:bg-button-primary-background-hover active:bg-button-primary-background-pressed focus:outline-offset-4",
+  ButtonSecondary: "text-button-secondary-text bg-button-secondary-background border-button-secondary-border border-1 hover:bg-button-secondary-background-hover active:bg-button-secondary-background-pressed focus:outline-offset-4",
+  LinkPrimary: "underline text-link-text hover:text-link-text-hover visited:text-link-text-visited focus:outline-offset-4",
+};
+
+const sizeClasses = {
+  base: "px-5 py-2",
+  large: "px-8 py-3",
+  link: "p-0",
+  icon: "p-5 aspect-square",
+};
+---
+
+<a href={href} class="" target={target} class:list={[linkStyling, variantClasses[variant], sizeClasses[size]]}>
+  {iconPosition === "left" && icon && <Icon name={icon} class="text-text-primary text-body-large" />}
+  <slot />
+  {iconPosition === "right" && icon && <Icon name={icon} class="text-text-primary text-body-large" />}
+  <!-- {
+    (variant === "ButtonPrimary" || variant === "ButtonSecondary") && (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" class="w-4 h-4 shrink-0">
+        <path d="M11.293 17.293L12.707 18.707L19.414 12L12.707 5.29297L11.293 6.70697L15.586 11H6V13H15.586L11.293 17.293Z" fill="currentColor" />
+      </svg>
+    )
+  } -->
+</a>

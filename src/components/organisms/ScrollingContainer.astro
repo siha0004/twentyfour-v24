@@ -1,0 +1,12 @@
+---
+import CardProcess from "../../components/molecules/CardProcess.astro";
+import process from "../../data/process.json";
+---
+
+<ul class="full-bleed col-[full] flex gap-6 overflow-x-auto px-[max(1rem,_50%_-_var(--content-width)_/_2)] snap-x snap-mandatory">
+  {
+    process.map((step) => {
+      return <CardProcess data={step} />;
+    })
+  }
+</ul>

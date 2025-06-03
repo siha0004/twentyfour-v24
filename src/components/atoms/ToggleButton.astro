@@ -1,0 +1,9 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { icon } = Astro.props;
+---
+
+<button id={icon} class="w-[40px] h-[40px] aspect-square flex items-center justify-center rounded-full transition hover:bg-hover">
+  <Icon name={icon} class="text-text-primary text-body-xlarge" />
+</button>

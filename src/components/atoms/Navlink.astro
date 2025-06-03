@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+const { href = "#", target = "_self", variant = "main", icon = "arrow-right" } = Astro.props;
+
+const linkStyling = "inline-flex items-center capitalize text-body-base text-link-text group focus:outline-offset-4 visited:text-link-text";
+
+const variantClasses = {
+  main: "hover:text-link-text-hover active:underline-offset-8 decoration-border-accent ",
+  sub: "gap-4 self-stretch",
+  dropdown: "gap-2 hover:text-link-text-hover",
+};
+---
+
+<a href={href} target={target} class:list={[linkStyling, variantClasses[variant]]}
+  ><slot />
+  {variant === "sub" && <Icon name={icon} class=" shrink-0 text-link-text hidden group-hover:block transition-opacity duration-200" />}
+  {variant === "dropdown" && <Icon name="chevron-down" class="shrink-0 text-link-text text-body-large" />}
+</a>

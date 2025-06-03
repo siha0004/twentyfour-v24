@@ -1,0 +1,152 @@
+---
+import { Icon } from "astro-icon/components";
+import Navlink from "../atoms/Navlink.astro";
+import Button from "../atoms/Button.astro";
+import NavlinkDropdown from "../molecules/NavlinkDropdown.astro";
+import NavMobile from "../molecules/NavMobile.astro";
+---
+
+<header class="fixed w-full flex items-center justify-between glass border-b border-b-border-primary py-4 px-[max(1rem,_50%_-_var(--content-width)_/_2)] z-30">
+  <nav class="flex gap-4 items-center">
+    <a href="/" class="text-body-xlarge flex items-center"><Icon name="wordmark" class="text-body-xlarge hidden sm:block" /><Icon name="logomark" class="text-heading-medium" /></a>
+    <ul class="hidden md:flex gap-8 md:items-center">
+      <li><Navlink href="/cases">Cases</Navlink></li>
+      <li><NavlinkDropdown label="Services" variant="services" /></li>
+      <li><Navlink href="/build">Blog</Navlink></li>
+      <li><NavlinkDropdown label="Om Os" variant="about" /></li>
+    </ul>
+  </nav>
+
+  <div id="green" class="flex flex-col items-end">
+    <div id="yellow" class="flex items-center gap-4">
+      <Button size="base" id="openModalBtnDesk" hide="mobile">Kontakt os</Button>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+</header>
+<NavMobile />
+
+<style>
+  .burger {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .burger .line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    margin-bottom: 5px;
+    transition: 0.2s linear;
+  }
+
+  .burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    transition: 0.2s linear;
+  }
+
+  .burger.active .line:nth-child(2) {
+    opacity: 0;
+    transition: 0.15s linear;
+  }
+
+  .burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    transition: 0.2s linear;
+  }
+
+  @media (min-width: 768px) {
+    .burger {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // BURGER MENU
+  // const burger = document.querySelector("#burger");
+  const burger = document.querySelector(".burger");
+  const navMobile = document.querySelector("#navMobile");
+
+  let burgerIsOpen = false;
+
+  burger?.addEventListener("click", () => {
+    burgerIsOpen = !burgerIsOpen;
+    navMobile?.classList.toggle("translate-x-full");
+    burger?.classList.toggle("active");
+  });
+
+  // OVERLAY SCRIPT MOBILE
+  const openModalMob = document.querySelector("#openModalBtnMob");
+  const modalMob = document.getElementById("contactModalMob");
+  const openFormMob = document.querySelector("#openFormBtn");
+  const closeModal = document.getElementById("closeModalBtn");
+  const btnContainer = document.querySelector("#openFormBtnContainer");
+  const info = document.querySelector("#contactInformation");
+  const form = document.querySelector("#messageForm");
+
+  let formIsOpen = false;
+
+  openModalMob?.addEventListener("click", () => {
+    // console.log("open mobile click");
+    modalMob?.classList.remove("hidden");
+    modalMob?.classList.add("grid");
+    form?.classList.add("hidden");
+    formIsOpen = false;
+
+    // Lukker burgermenu
+    burgerIsOpen = !burgerIsOpen;
+    navMobile?.classList.toggle("translate-x-full");
+    burger?.classList.toggle("rotate-180");
+  });
+
+  openFormMob?.addEventListener("click", () => {
+    // console.log("open form mobile click");
+    formIsOpen = true;
+    btnContainer?.classList.add("hidden");
+    form?.classList.remove("hidden");
+    form?.classList.add("grid");
+    info?.classList.add("hidden");
+  });
+
+  closeModal?.addEventListener("click", () => {
+    if (formIsOpen) {
+      form?.classList.remove("grid");
+      form?.classList.add("hidden");
+      info?.classList.remove("hidden");
+      btnContainer?.classList.remove("hidden");
+    }
+    modalMob?.classList.remove("grid");
+    modalMob?.classList.add("hidden");
+    formIsOpen = false;
+  });
+
+  // OVERLAY SCRIPT DESKTOP
+  const openButtonDesk = document.querySelector("#openModalBtnDesk");
+  const modalDesk = document.getElementById("contactModalDesk");
+  const closeBtnDesk = document.getElementById("closeModalBtnDesk");
+
+  openButtonDesk?.addEventListener("click", () => {
+    // console.log("open Desktop click");
+    modalDesk?.classList.remove("hidden");
+    modalDesk?.classList.add("grid");
+    console.log("formIsOpen:", formIsOpen);
+  });
+
+  closeBtnDesk?.addEventListener("click", () => {
+    // console.log("close Desktop click");
+    modalDesk?.classList.add("hidden");
+  });
+
+  modalDesk?.addEventListener("click", (e) => {
+    // console.log("close by click outside");
+    if (e.target === modalDesk) {
+      modalDesk.classList.add("hidden");
+    }
+  });
+</script>

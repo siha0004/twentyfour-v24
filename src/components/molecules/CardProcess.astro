@@ -1,0 +1,13 @@
+---
+const { data } = Astro.props;
+---
+
+<li class="snap-center basis-[min(400px,_90%)] shrink-0">
+  <article class="grid gap-3">
+    <div class="bg-brand-raspberry aspect-video col-start-1 row-start-1 col-span-1"></div>
+    <footer class="grid">
+      <h3 class="text-heading-small">{data.heading}</h3>
+      <p class="text-text-secondary text-body-small">{data.description}</p>
+    </footer>
+  </article>
+</li>

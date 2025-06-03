@@ -1,0 +1,16 @@
+---
+import Navlink from "../atoms/Navlink.astro";
+import NavSummary from "../atoms/NavSummary.astro";
+import Button from "../atoms/Button.astro";
+---
+
+<nav id="navMobile" class="fixed flex flex-col justify-between bg-background-secondary px-[1rem] py-8 md:hidden top-0 left-0 w-full h-full z-20 translate-x-full transition-transform duration-300">
+  <ul class="grid gap-4 mt-16">
+    <li class="border-b border-b-border-primary pb-4"><Navlink href="/cases">Cases</Navlink></li>
+    <li class="border-b border-b-border-primary pb-4"><NavSummary summary="Services" variant="services" link="/services" mainpage="Alle services" /></li>
+    <li class="border-b border-b-border-primary pb-4"><Navlink href="/build">Blog</Navlink></li>
+    <li class="border-b border-b-border-primary pb-4"><NavSummary summary="Om Os" variant="about" link="/build" mainpage="Alt om os" /></li>
+  </ul>
+
+  <Button size="base" id="openModalBtnMob" hide="desktop">Kontakt os</Button>
+</nav>

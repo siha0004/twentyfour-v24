@@ -1,7 +1,94 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+
+import ClientLogoWrapper from "../components/organisms/ClientLogoWrapper.astro";
+import Link from "../components/atoms/Link.astro";
+import CardServices from "../components/molecules/CardServices.astro";
+import IndexHero from "../components/organisms/IndexHero.astro";
+// import SectionCases from "../components/organisms/SectionCases.astro";
+import AboutGallery from "../components/organisms/AboutGallery.astro";
+
+import services from "../data/services.json";
+
+// Fetcher data fra databasen og ligger i konstanten 'data'
+const url = import.meta.env.CASES_URL;
+const key = import.meta.env.CASES_KEY;
+
+const caseData = await fetch(url, {
+  method: "GET",
+  headers: {
+    apikey: key,
+  },
+}).then((res) => res.json());
+
+const sortedData = [...caseData].sort((a, b) => a.id - b.id);
 ---
 
 <MainLayout>
-  <h1 class="heading-large">v24</h1>
+  <section id="hero" class="py-8 lg:pb-32">
+    <IndexHero />
+    <div id="herovideo" class="relative">
+      <video id="myvideo" muted loop class="rounded-small w-full h-auto">
+        <source src="https://lmssxxkhwlvcavzlaamg.supabase.co/storage/v1/object/public/video/hero/showcase.mp4" type="video/mp4" />
+      </video>
+
+      <button id="playpausebtn" class="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"> <div id="playicon" class="w-44 h-44 text-background-secondary text-heading-xlarge bg-text-primary/50 rounded-full flex items-center justify-center">▶</div> </button>
+    </div>
+  </section>
+
+  <section id="cases" class="section-main full-bleed border-t border-t-border-secondary">
+    <!-- <SectionCases data={sortedData} /> -->
+  </section>
+
+  <section id="services" class="section-main grid lg:grid-cols-[4fr_8fr] lg:gap-20 relative">
+    <article class="pb-8 lg:pb-0 lg:sticky lg:top-32 lg:self-start">
+      <h1 class="text-heading-tagline pb-2 text-text-secondary">Services</h1>
+      <h2 class="text-heading-small pb-6 lg:pb-10 text-text-primary">Én partner til hele rejsen – fra idé til design, udvikling, drift og skalering</h2>
+      <Link href="/services" variant="ButtonSecondary" size="large" ikon="ButtonSecondary">Alle services</Link>
+    </article>
+    <ul class="grid md:grid-cols-2 gap-5">
+      {
+        services.map((service) => {
+          return <CardServices data={service} />;
+        })
+      }
+    </ul>
+  </section>
+
+  <section id="om" class="section-main"><AboutGallery /></section>
+
+  <section class="full-bleed overflow-hidden section-main">
+    <article class="pb-8 lg:pb-10">
+      <h1 class="text-heading-tagline pb-2 text-text-secondary">Vores kunder</h1>
+      <h2 class="text-heading-small md:max-w-2xl text-text-primary">Vi arbejder med både små og store virksomheder - Her er et lille udpluk fra de sidste 10 år.</h2>
+    </article>
+    <ClientLogoWrapper />
+  </section>
 </MainLayout>
+
+<script>
+  const video = document.getElementById("myvideo");
+  const btn = document.getElementById("playpausebtn");
+  const iconDiv = document.getElementById("playicon");
+
+  btn.addEventListener("click", () => {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  });
+
+  video.addEventListener("play", () => {
+    iconDiv.classList.add("hidden"); // skjul kun div-indholdet (▶)
+  });
+
+  video.addEventListener("pause", () => {
+    iconDiv.classList.remove("hidden"); // vis det igen
+  });
+
+  video.addEventListener("ended", () => {
+    video.currentTime = 0;
+    video.pause();
+  });
+</script>

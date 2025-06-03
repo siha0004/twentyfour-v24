@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon/components";
+import Link from "../atoms/Link.astro";
+import GraphicIcons from "../atoms/GraphicIcons.astro";
+
+const { title, text, variant, button } = Astro.props;
+---
+
+<section class=" grid grid-cols-4 lg:grid-cols-12 grid-rows-[repeat(4,_auto)] lg:max-h-[525px]  gap-6 lg:gap-x-6 border-b border-b-border-secondary">
+  <article class="col-start-1 col-span-4 row-start-3 row-span-2 lg:col-span-6 pb-32">
+    <h1 class="heading-xlarge text-text-primary pb-3 lg:pb-5">{title}</h1>
+    <p class="text-body-large text-text-secondary lg:max-w-2xl mb-8">{text}</p>
+    {button && <Link variant="ButtonSecondary"icon ="arrow-left" iconPosition="left" href="javascript:history.back()">Gå tilbage hvor du kom fra</Link> }
+  </article>
+ { variant == "default" &&
+ ( 
+ <GraphicIcons id="" shape="butterfly" size="small" position="col-start-3 row-start-3 lg:col-start-9 lg:place-self-end" />   
+ <GraphicIcons id="" shape="flower" size="large" position="col-start-4 row-start-4 lg:col-start-11  lg:col-span-2" />   
+ <GraphicIcons id="" shape="fan" size="medium" position=" col-start-3 row-start-1" />   
+
+      
+ )}
+</section>
+

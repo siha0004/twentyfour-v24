@@ -1,0 +1,28 @@
+---
+import ClientLogo from "../atoms/ClientLogo.astro";
+const { LogoName1, LogoName2, LogoName3, LogoName4, LogoName5, LogoName6, LogoName7, LogoName8, LogoName9, LogoName10, LogoName11, LogoName12 } = Astro.props;
+
+const { variant = "secondary" } = Astro.props;
+
+const rowStyling = "flex content-center items-start gap-4 lg:gap-10 translate-x-[-25vw] lg:translate-x-[-10vw] relative";
+
+const variantClasses = {
+  primary: "relative left-0",
+  secondary: "relative left-[-5vw]",
+};
+---
+
+<article class:list={[rowStyling, variantClasses[variant]]}>
+  <ClientLogo LogoName={LogoName1} />
+  <ClientLogo LogoName={LogoName2} />
+  <ClientLogo LogoName={LogoName3} />
+  <ClientLogo LogoName={LogoName4} />
+  <ClientLogo LogoName={LogoName5} />
+  <ClientLogo LogoName={LogoName6} />
+  <ClientLogo LogoName={LogoName7} />
+  <ClientLogo LogoName={LogoName8} />
+  <ClientLogo LogoName={LogoName9} />
+  <ClientLogo LogoName={LogoName10} />
+  <ClientLogo LogoName={LogoName11} />
+  <ClientLogo LogoName={LogoName12} />
+</article>

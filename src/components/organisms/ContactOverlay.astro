@@ -1,0 +1,16 @@
+---
+import ContactInformation from "./ContactInformation.astro";
+import ContactMessageform from "./ContactMessageform.astro";
+import Button from "../atoms/Button.astro";
+---
+
+<div id="contactModalMob" class="hidden gap-2 fixed place-items-center top-0 left-0 w-full h-full bg-licorice-75/50 backdrop-blur-sm z-30">
+  <div class="backdrop:bg-transparent grid gap-2 sm:grid-cols-[1fr_auto] md:gap-5 items-start justify-items-end max-w-7xl w-full p-4">
+    <Button id="closeModalBtn" icon="x" variant="secondary" size="icon" />
+    <ContactInformation id="contactInformation" />
+    <div id="openFormBtnContainer" class="sm:col-span-2">
+      <Button id="openFormBtn" icon="arrow-right" variant="secondary">Send os en mail</Button>
+    </div>
+    <ContactMessageform />
+  </div>
+</div>

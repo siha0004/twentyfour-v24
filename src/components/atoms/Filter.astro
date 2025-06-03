@@ -1,0 +1,11 @@
+---
+const { filter } = Astro.props;
+import { Icon } from "astro-icon/components";
+---
+
+<button data-filter={filter} class="text-text-primary flex items-center gap-1 capitalize px-1 mb-2 lg:mb-0 cursor-pointer border-b-2 border-b-transparent hover:border-b-border-primary focus-visible:outline-1 focus-visible:rounded-small">
+  {filter}
+  <span class="opacity-0 transition-opacity duration-300" data-icon>
+    <Icon name="x" class="text-body-large" />
+  </span>
+</button>

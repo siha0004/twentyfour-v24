@@ -1,0 +1,33 @@
+---
+import Navlink from "./Navlink.astro";
+import { Icon } from "astro-icon/components";
+
+const { summary, variant, link, mainpage } = Astro.props;
+
+const optionsMap = {
+  services: ["design", "webudvikling", "intergration", "vedligeholdelse"],
+  about: ["team", "karriere", "historie"],
+};
+
+const options = optionsMap[variant] || ["404"];
+---
+
+<details class="group">
+  <summary class="flex items-center justify-between text-body-base text-link-text appearance-none list-none marker:hidden cursor-pointer"
+    >{summary}
+    <span><Icon name="chevron-down" class="text-body-large group-open:rotate-180 transition-transform duration-300" /> </span>
+  </summary>
+
+  <ul class="grid gap-4 ml-2 mt-4">
+    <Navlink href={link} variant="sub">{mainpage}</Navlink>
+    {
+      options.map((option: object) => {
+        return (
+          <Navlink href="build" variant="sub">
+            {option}
+          </Navlink>
+        );
+      })
+    }
+  </ul>
+</details>

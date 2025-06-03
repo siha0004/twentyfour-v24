@@ -1,0 +1,8 @@
+---
+const { name, label } = Astro.props;
+---
+
+<div class="grid p-4 self-stretch">
+  <label for={name} class="text-text-primary">{label}</label>
+  <textarea name={name} id={name} rows="4" class="outline-offset-4 resize-none h-64"></textarea>
+</div>

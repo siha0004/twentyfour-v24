@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { id, iconPosition = "right", icon, variant = "primary", size = "large", hide = "false" } = Astro.props;
+let buttonStyling;
+
+const variantClasses = {
+  primary: "cursor-pointer text-button-primary-text bg-button-primary-background hover:bg-button-primary-background-hover active:bg-button-primary-background-pressed focus:outline-offset-4",
+  secondary: "cursor-pointer text-button-secondary-text bg-button-secondary-background border-button-secondary-border border-1 hover:bg-button-secondary-background-hover active:bg-button-secondary-background-pressed focus:outline-offset-4",
+};
+
+const sizeClasses = {
+  base: "px-5 py-2",
+  large: "px-8 py-3",
+  icon: "p-3",
+};
+
+if (hide === "mobile") {
+  buttonStyling = "hidden md:inline-flex items-center gap-4 rounded-full text-body-base";
+} else if (hide === "desktop") {
+  buttonStyling = "inline-flex  md:hidden items-center gap-4 rounded-full text-body-base";
+} else {
+  buttonStyling = "inline-flex items-center gap-4 rounded-full text-body-base";
+}
+---
+
+<button id={id} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size]]}>
+  {iconPosition === "left" && icon && <Icon name={icon} class="text-text-primary text-body-large" />}
+  <slot />
+  {iconPosition === "right" && icon && <Icon name={icon} class="text-text-primary inline-flex items-center gap-4 " />}
+</button>

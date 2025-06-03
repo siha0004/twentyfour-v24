@@ -1,0 +1,4 @@
+[
+  { "name": "Hofor", "services": ["webudvikling", "integration", "vedligeholdelse"], "link": "hofor", "thumbnail_img": "/src/assets/images/hofor.png" },
+  { "name": "Mond", "services": ["integration", "design"], "link": "mond", "thumbnail_img": "/src/assets/images/mond.png" }
+]

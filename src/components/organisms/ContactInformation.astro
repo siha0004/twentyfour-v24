@@ -1,0 +1,21 @@
+---
+import CardContact from "../molecules/CardContact.astro";
+import contacts from "../../data/contact.json";
+
+const { id } = Astro.props;
+---
+
+<section id={id} class="bg-background-primary w-full p-5 sm:p-10 rounded-large sm:-order-1 @container">
+  <header class="mb-4 @2xl:my-8 grid gap-2 max-w-[420px]">
+    <h2 class="text-heading-medium text-text-primary text-pretty">Ved du ikke helt hvordan dit projekt skal se ud?</h2>
+    <p class="text-pretty text-text-primary">Det er netop de vi kan hjælpe med, giv os et kald og så finde vi ud af detaljerne sammen.</p>
+  </header>
+
+  <ul class="grid @2xl:grid-cols-3 gap-2 @2xl:gap-11">
+    {
+      contacts.map((contact) => {
+        return <CardContact data={contact} />;
+      })
+    }
+  </ul>
+</section>

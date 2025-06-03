@@ -1,0 +1,57 @@
+---
+const { name, data } = Astro.props;
+
+const year = data.find((item) => item.year)?.year;
+const services = data.find((item) => item.services)?.services;
+const link = data.find((item) => item.link)?.link;
+const cover = data.find((item) => item.cover)?.cover;
+const heading = data.find((item) => item.heading)?.heading;
+const text = data.find((item) => item.text)?.text;
+
+import { Image } from "astro:assets";
+
+// import img from "../../assets/about/office.webp";
+import Link from "../atoms/Link.astro";
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
+if (!images[cover]) throw new Error(`"${cover}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<section class="section-main grid gap-5 md:gap-28">
+  <header>
+    <h1 class="heading-xlarge text-text-primary">{name}</h1>
+    <Image src={images[cover]()} alt={`coverbilled til ${name}`} class="rounded-small aspect-video object-cover" />
+  </header>
+  <section class="grid gap-10 md:grid-cols-[1fr_2fr] lg:grid-cols-2">
+    <div class="grid gap-8 items-start justify-items-start">
+      <div class="grid grid-cols-2 md:grid-cols-1 gap-4">
+        <div>
+          <h3 class="font-medium text-text-primary mb-2">År</h3>
+          <p class="mb-5 text-text-primary">{year}</p>
+        </div>
+
+        <div>
+          <h3 class="font-medium text-text-primary mb-2">Services</h3>
+          <ul>
+            {
+              services.map((service: JSON) => {
+                return (
+                  <li class="capitalize mb-2">
+                    <Link href="/build" variant="LinkPrimary" iconPosition="none" size="link">
+                      {service}
+                    </Link>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
+      </div>
+      <Link href={link} target="_blank" variant="ButtonSecondary">Se løsningen</Link>
+    </div>
+    <article>
+      <h2 class="heading-large text-text-primary mb-6">{heading}</h2>
+      <p class="text-text-secondary">{text}</p>
+    </article>
+  </section>
+</section>

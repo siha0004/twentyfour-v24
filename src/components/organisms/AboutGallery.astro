@@ -1,0 +1,23 @@
+---
+import Link from "../atoms/Link.astro";
+
+import { Image } from "astro:assets";
+// import foosball from "../../assets/about/foosball.webp";
+import foosball from "../../assets/about/foosball.webp";
+import over_shoulder from "../../assets/about/over-shoulder.webp";
+import office from "../../assets/about/office.webp";
+import stairs from "../../assets/about/stairs.webp";
+---
+
+<section class="grid grid-cols-4 gap-4 lg:grid-cols-12 lg:gap-6">
+  <article class="col-span-4 row-start-1 lg:col-start-7 lg:col-span-6 lg:row-span-2 lg:content-center lg:px-4 lg:pb-4 pb-8">
+    <h1 class="text-heading-large pb-6 text-text-primary">Om Twentyfour</h1>
+    <p class="text-body-base text-text-secondary pb-4 max-w-xl">Vi er et mangfoldigt team på 30 nysgerrige nørder, pixelperfektionister og problemløsere – med base på Amager.</p>
+    <p class="text-body-base text-text-secondary pb-8 lg:pb-10 max-w-xl">Siden 2010 har vi hjulpet hundredvis af projekter i mål for både store internationale organisationer, samt lokale virksomheder og institutioner.</p>
+    <Link href="" variant="ButtonSecondary" size="large" ikon="ButtonPrimary">Læs mere </Link>
+  </article>
+  <Image src={office} class="col-span-4 row-start-2 lg:col-start-1 lg:col-span-6 lg:row-start-1 lg:row-span-3 object-cover rounded-small max-w-[600px] w-full h-auto lg:place-self-end" alt="Billede af en der arbejder på et kontor" />
+  <Image src={foosball} class="col-span-2 row-start-3 lg:col-start-2 lg:col-span-2 lg:row-start-4 w-full h-full object-cover rounded-small lg:max-w-[250px] lg:h-auto" alt="Billede af to der spiller bordfodbold" />
+  <Image src={over_shoulder} class="col-span-2 row-start-3 row-span-2 lg:col-start-4 lg:col-span-3 lg:row-start-4 rounded-small lg:max-w-[330px] w-full h-auto" alt="Billede af en der arbejder" />
+  <Image src={stairs} class="col-span-2 row-span-4 lg:col-start-7 lg:col-span-4 lg:row-start-3 rounded-small w-full lg:max-w-[480px] h-auto" alt="Billede af en trappe" />
+</section>
