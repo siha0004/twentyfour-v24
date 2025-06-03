@@ -6,7 +6,7 @@ import ModeToggle from "../molecules/ModeToggle.astro";
 import GraphicIcons from "../atoms/GraphicIcons.astro";
 ---
 
-<footer class="grid grid-cols-4 lg:grid-cols-12 lg:grid-rows-5 px-[max(1rem,_50%_-_var(--content-width)_/_2)] overflow-hidden section-main relative lg:gap-x-6">
+<footer class="grid grid-cols-4 lg:grid-cols-12 lg:grid-rows-5 px-[max(1rem,_50%_-_var(--content-width)_/_2)] overflow-hidden section-main relative lg:gap-x-6 pb-7">
   <article class="pb-10 lg:pb-20 col-start-1 row-start-2 lg:row-span-3 lg:row-start-2 z-10">
     <h1 class="heading-xlarge text-text-primary pb-10 lg:pb-20">Skal vi tage en snak<br />om dit næste projekt?</h1>
     <ul class="heading-small text-text-primary">
@@ -16,7 +16,7 @@ import GraphicIcons from "../atoms/GraphicIcons.astro";
   </article>
 
   <section class="grid gap-7 col-start-1 row-start-5 row-span-1 z-10">
-    <section class="lg:flex lg:justify-end lg:items-center pb-6 lg:pb-0 border-b border-b-border-secondary">
+    <section class="justify-start lg:flex lg:justify-end lg:items-center pb-6 lg:pb-7 border-b border-b-border-secondary">
       <ModeToggle />
     </section>
 
@@ -41,5 +41,5 @@ import GraphicIcons from "../atoms/GraphicIcons.astro";
 
   <GraphicIcons id="" shape="fan" size="medium" position="col-start-3 col-span-1 row-start-1 row-span-1 lg:col-start-4" />
   <GraphicIcons id="" shape="butterfly" size="small" position="col-start-3 col-span-1 row-start-3 row-span-1 lg:col-start-10 lg:row-start-4" />
-  <GraphicIcons id="" shape="square" size="large" position="col-start-3 col-span-2 row-span-2 row-start-4 lg:col-start-11 lg:row-start-4 relative right-[-8vw]" />
+  <GraphicIcons id="" shape="square" size="large" position="col-start-4 col-span-1 row-span-2 row-start-4 lg:col-start-11 lg:row-start-4 relative right-[-8vw]" />
 </footer>

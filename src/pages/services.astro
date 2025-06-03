@@ -22,13 +22,13 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
 ---
 
 <MainLayout title="Services | Twentyfour">
-  <section id="hero" class="py-8 lg:py-32">
+  <section id="hero">
     <Hero
       title="Services"
       text="Vi skaber skræddersyede digitale løsninger, der passer til dine behov. Med over 10 års erfaring og et tværfagligt team, der kombinerer teknologi, design og problemløsning, hjælper vi dig med at udvikle løsninger, der skaber værdi for både din forretning og brugerne. Vi tilbyder full-service løsninger, fra idé til implementering."
     />
   </section>
-  <section id="services" class="py-8 lg:pb-32">
+  <section id="services" class="section-main">
     <ul class="grid lg:grid-cols-4 gap-5">
       {
         services.map((service) => {
@@ -37,12 +37,12 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
       }
     </ul>
   </section>
-  <section class="full-bleed py-8 lg:pb-32">
+  <section class="full-bleed section-main">
     <article class="place-content-center">
-      <h1 class="text-heading-tagline pb-2">Proces</h1>
-      <h2 class="text-heading-small pb-10">Hvad skal der ske herfra?</h2>
+      <h1 class="text-heading-tagline text-text-secondary pb-2">Proces</h1>
+      <h2 class="text-heading-small text-text-primary pb-10">Hvad skal der ske herfra?</h2>
     </article>
     <ScrollingContainer />
   </section>
-  <section class="py-8 lg:pb-32"><SectionCases data={sortedData} /></section>
+  <section class="section-main"><SectionCases data={sortedData} /></section>
 </MainLayout>
