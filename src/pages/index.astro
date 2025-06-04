@@ -25,7 +25,7 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
 ---
 
 <MainLayout>
-  <section id="hero" class="py-8 lg:pb-32">
+  <section id="hero" class="py-8 lg:pb-32 grid">
     <IndexHero />
     <div id="herovideo" class="relative">
       <video id="myvideo" muted loop class="rounded-small w-full h-auto">
@@ -34,6 +34,9 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
 
       <button id="playpausebtn" class="absolute inset-0 z-10 flex items-center justify-center cursor-pointer"> <div id="playicon" class="w-28 h-28 lg:w-44 lg:h-44 text-background-secondary text-heading-xlarge bg-text-primary/50 rounded-full flex items-center justify-center">▶</div> </button>
     </div>
+    <p class="justify-self-end mt-16 text-text-primary text-body-large text-wrap max-w-xl">
+      Vi designer, bygger og vedligholder hjemmesider og digitale løsninger med brugeren i fokus og teknologien i ryggen. Vi lytter, stiller de rigtige spørgsmål og designer løsninger, som skaber værdi, der kan mærkes.
+    </p>
   </section>
 
   <section id="cases" class="section-main full-bleed border-t border-t-border-secondary">
