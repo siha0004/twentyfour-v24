@@ -1,7 +1,7 @@
 ---
 import Navlink from "../atoms/Navlink.astro";
 
-const { variant, label } = Astro.props;
+const { variant, label, href } = Astro.props;
 
 const optionsMap = {
   services: ["design", "webudvikling", "intergration", "vedligeholdelse"],
@@ -12,14 +12,14 @@ const options = optionsMap[variant] || ["404"];
 ---
 
 <div class="relative" id={`${variant}-wrapper`}>
-  <Navlink href=`/${variant}` variant="dropdown">{label}</Navlink>
+  <Navlink href=`/${href}` variant="dropdown">{label}</Navlink>
 
   <!-- Dropdown shown on hover -->
   <div id={`${variant}-dropdown`} class="absolute grid gap-4 p-5 mt-9 w-80 bg-background-secondary border border-border-primary rounded-small invisible transition duration-200 z-20">
     {
       options.map((option: object) => {
         return (
-          <Navlink href="build" variant="sub">
+          <Navlink href="/build" variant="sub">
             {option}
           </Navlink>
         );
