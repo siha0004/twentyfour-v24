@@ -19,7 +19,7 @@ if (!images[cover]) throw new Error(`"${cover}" does not exist in glob: "src/ass
 
 <section class="section-main grid gap-5 md:gap-28">
   <header>
-    <h1 class="heading-xlarge text-text-primary">{name}</h1>
+    <h1 class="heading-xlarge text-text-primary pb-2">{name}</h1>
     <Image src={images[cover]()} alt={`coverbilled til ${name}`} class="rounded-small aspect-video object-cover" />
   </header>
   <section class="grid gap-10 md:grid-cols-[1fr_2fr] lg:grid-cols-2">
