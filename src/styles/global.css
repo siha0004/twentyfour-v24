@@ -196,7 +196,7 @@
   }
 
   .glass {
-    @apply bg-background-glass/50 backdrop-blur-md;
+    @apply bg-background-glass/65 backdrop-blur-md;
   }
 
   .section-main {
