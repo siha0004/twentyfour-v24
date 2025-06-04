@@ -25,7 +25,7 @@ const sortedData = [...caseData].sort((a, b) => a.name.localeCompare(b.name, "da
   <section class="section-main grid gap-10 relative">
     <header class="flex justify-between items-start sticky top-24 self-start z-20">
       <!-- FILTER -->
-      <div id="filters" class="py-2 px-6 glass rounded-large border-2 border-border-primary w-fit grid gap-2 justify-items-start lg:flex lg:flex-row lg:gap-4 lg:rounded-full">
+      <div id="filters" class="py-2 px-6 glass rounded-large border border-border-primary w-fit grid gap-2 justify-items-start lg:flex lg:flex-row lg:gap-4 lg:rounded-full">
         <!-- Toggle-knap til mobil -->
         <button id="toggleFilters" class="lg:hidden font-medium text-text-primary">Filtre</button>
 
@@ -40,9 +40,9 @@ const sortedData = [...caseData].sort((a, b) => a.name.localeCompare(b.name, "da
       </div>
 
       <!-- SEARCH BAR -->
-      <div id="searchContainer" class="flex items-center glass max-w-3xs px-4 py-2 border-2 border-border-primary rounded-full transition-all duration-300 lg:max-w-full lg:flex-row" data-search-container>
+      <div id="searchContainer" class="flex items-center glass max-w-3xs px-4 py-2 border border-border-primary rounded-full transition-all duration-300 lg:max-w-full lg:flex-row" data-search-container>
         <button id="toggleSearch" class="lg:hidden">
-          <Icon name="search" class="text-body-xlarge" />
+          <Icon name="search" class="text-text-primary text-body-xlarge" />
         </button>
 
         <!-- Input skjules på mobil og vises når aktiv -->
