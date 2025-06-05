@@ -39,6 +39,8 @@
   --color-lime-75: #72b803;
   --color-lime-90: #456d06;
 
+  --color-orange-50: #f76521;
+
   /* --color-yellow-10: ;
   --color-yellow-25: ;
   --color-yellow-50: ;
@@ -130,6 +132,18 @@
   --color-brand-lime: var(--color-lime-45);
   --color-brand-cream: var(--color-cream-10);
   --color-brand-licorice: var(--color-licorice-90);
+
+  /* Gradients */
+  --color-gradient-a-from: var(--color-lime-45);
+  --color-gradient-a-to: var(--color-lime-90);
+  --color-gradient-b-from: var(--color-raspberry-50);
+  --color-gradient-b-to: var(--color-licorice-90);
+  --color-gradient-c-from: var(--color-orange-50);
+  --color-gradient-c-to: var(--color-raspberry-50);
+  --color-gradient-d-from: var(--color-raspberry-50);
+  --color-gradient-d-to: var(--color-lime-45);
+  --color-gradient-e-from: var(--color-lime-45);
+  --color-gradient-e-to: var(--color-orange-50);
 }
 
 /* Custom cursor */
@@ -174,6 +188,18 @@
     --color-button-secondary-background: var(--color-licorice-75);
     --color-button-secondary-background-hover: var(--color-licorice-50);
     --color-button-secondary-background-pressed: var(--color-licorice-90);
+
+    /* Gradients */
+    --color-gradient-a-from: var(--color-lime-45);
+    --color-gradient-a-to: var(--color-cream-10);
+    --color-gradient-b-from: var(--color-raspberry-50);
+    --color-gradient-b-to: var(--color-licorice-90);
+    --color-gradient-c-from: var(--color-raspberry-50);
+    --color-gradient-c-to: var(--color-lime-45);
+    --color-gradient-d-from: var(--color-lime-45);
+    --color-gradient-d-to: var(--color-orange-50);
+    --color-gradient-e-from: var(--color-orange-50);
+    --color-gradient-e-to: var(--color-raspberry-50);
   }
 
   .heading-display {
