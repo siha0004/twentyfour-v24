@@ -68,20 +68,9 @@ import NavMobile from "../molecules/NavMobile.astro";
 </style>
 
 <script>
-  // BURGER MENU
-  // const burger = document.querySelector("#burger");
+  // ======== ELEMENTER ========
   const burger = document.querySelector(".burger");
   const navMobile = document.querySelector("#navMobile");
-
-  let burgerIsOpen = false;
-
-  burger?.addEventListener("click", () => {
-    burgerIsOpen = !burgerIsOpen;
-    navMobile?.classList.toggle("translate-x-full");
-    burger?.classList.toggle("active");
-  });
-
-  // OVERLAY SCRIPT MOBILE
   const openModalMob = document.querySelector("#openModalBtnMob");
   const modalMob = document.getElementById("contactModalMob");
   const openFormMob = document.querySelector("#openFormBtn");
@@ -89,64 +78,80 @@ import NavMobile from "../molecules/NavMobile.astro";
   const btnContainer = document.querySelector("#openFormBtnContainer");
   const info = document.querySelector("#contactInformation");
   const form = document.querySelector("#messageForm");
+  const openButtonDesk = document.querySelector("#openModalBtnDesk");
+  const modalDesk = document.getElementById("contactModalDesk");
+  const closeBtnDesk = document.getElementById("closeModalBtnDesk");
 
+  // ======== TILSTANDE ========
+  let burgerIsOpen = false;
   let formIsOpen = false;
 
-  openModalMob?.addEventListener("click", () => {
-    // console.log("open mobile click");
-    modalMob?.classList.remove("hidden");
-    modalMob?.classList.add("grid");
-    form?.classList.add("hidden");
-    formIsOpen = false;
-
-    // Lukker burgermenu
+  // ======== BURGER FUNKTIONER ========
+  function toggleBurgerMenu() {
     burgerIsOpen = !burgerIsOpen;
     navMobile?.classList.toggle("translate-x-full");
     burger?.classList.toggle("active");
-  });
+  }
 
-  openFormMob?.addEventListener("click", () => {
-    // console.log("open form mobile click");
+  function closeBurgerMenu() {
+    burgerIsOpen = false;
+    navMobile?.classList.add("translate-x-full");
+    burger?.classList.remove("active");
+  }
+
+  // ======== MODAL MOBIL FUNKTIONER ========
+  function openMobileModal() {
+    modalMob?.classList.remove("hidden");
+    modalMob?.classList.add("grid");
+    form?.classList.add("hidden");
+    info?.classList.remove("hidden");
+    btnContainer?.classList.remove("hidden");
+    formIsOpen = false;
+    closeBurgerMenu();
+  }
+
+  function openMobileForm() {
     formIsOpen = true;
     btnContainer?.classList.add("hidden");
     form?.classList.remove("hidden");
     form?.classList.add("grid");
     info?.classList.add("hidden");
-  });
+  }
 
-  closeModal?.addEventListener("click", () => {
+  function closeMobileModal() {
+    modalMob?.classList.remove("grid");
+    modalMob?.classList.add("hidden");
+
     if (formIsOpen) {
       form?.classList.remove("grid");
       form?.classList.add("hidden");
       info?.classList.remove("hidden");
       btnContainer?.classList.remove("hidden");
+      formIsOpen = false;
     }
-    modalMob?.classList.remove("grid");
-    modalMob?.classList.add("hidden");
-    formIsOpen = false;
-  });
+  }
 
-  // OVERLAY SCRIPT DESKTOP
-  const openButtonDesk = document.querySelector("#openModalBtnDesk");
-  const modalDesk = document.getElementById("contactModalDesk");
-  const closeBtnDesk = document.getElementById("closeModalBtnDesk");
-
-  openButtonDesk?.addEventListener("click", () => {
-    // console.log("open Desktop click");
+  // ======== MODAL DESKTOP FUNKTIONER ========
+  function openDesktopModal() {
     modalDesk?.classList.remove("hidden");
     modalDesk?.classList.add("grid");
-    console.log("formIsOpen:", formIsOpen);
-  });
+  }
 
-  closeBtnDesk?.addEventListener("click", () => {
-    // console.log("close Desktop click");
+  function closeDesktopModal() {
     modalDesk?.classList.add("hidden");
-  });
+  }
+
+  // ======== EVENT LISTENERS ========
+  burger?.addEventListener("click", toggleBurgerMenu);
+  openModalMob?.addEventListener("click", openMobileModal);
+  openFormMob?.addEventListener("click", openMobileForm);
+  closeModal?.addEventListener("click", closeMobileModal);
+  openButtonDesk?.addEventListener("click", openDesktopModal);
+  closeBtnDesk?.addEventListener("click", closeDesktopModal);
 
   modalDesk?.addEventListener("click", (e) => {
-    // console.log("close by click outside");
     if (e.target === modalDesk) {
-      modalDesk.classList.add("hidden");
+      closeDesktopModal();
     }
   });
 </script>
