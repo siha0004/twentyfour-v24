@@ -10,8 +10,10 @@ const { type, name, label } = Astro.props;
   peer-focus:-top-0 peer-focus:text-body-tiny peer-focus:text-text-secondary
   peer-placeholder-shown:top-[18px] peer-placeholder-shown:text-base peer-placeholder-shown:text-text-primary
   peer:not:placeholder-shown:-top-0 peer:not:placeholder-shown:text-body-tiny peer:not:placeholder-shown:text-text-secondary"
-    >{label}</label
   >
+    {label}
+  </label>
+  <p class="error italic text-text-error border-t border-t-border-error text-body-small pb-2"></p>
 
   <!-- ORIGINAL -->
   <!-- <label for={name} class="

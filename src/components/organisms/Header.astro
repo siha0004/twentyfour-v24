@@ -6,7 +6,7 @@ import NavlinkDropdown from "../molecules/NavlinkDropdown.astro";
 import NavMobile from "../molecules/NavMobile.astro";
 ---
 
-<header class="fixed w-full flex items-center justify-between glass border-b border-b-border-primary py-4 px-[max(1rem,_50%_-_var(--content-width)_/_2)] z-30">
+<header class="fixed w-full flex items-center justify-between glass border-b border-b-border-primary py-4 px-[max(1rem,_50%_-_var(--content-width)_/_2)] z-40">
   <nav class="flex gap-8 items-center">
     <a href="/" class="text-body-xlarge flex items-center"><Icon name="wordmark" class="text-body-xlarge text-text-primary hidden sm:block" /><Icon name="logomark" class="text-heading-medium text-text-primary" /></a>
     <ul class="hidden md:flex gap-8 md:items-center">
@@ -89,6 +89,8 @@ import NavMobile from "../molecules/NavMobile.astro";
   const btnContainer = document.querySelector("#openFormBtnContainer");
   const info = document.querySelector("#contactInformation");
   const form = document.querySelector("#messageForm");
+  const thanks = document.querySelector("#thankYouMessage");
+  const btnSend = document.querySelector("#sendForm");
 
   let formIsOpen = false;
 
@@ -124,6 +126,13 @@ import NavMobile from "../molecules/NavMobile.astro";
     modalMob?.classList.remove("grid");
     modalMob?.classList.add("hidden");
     formIsOpen = false;
+  });
+
+  btnSend?.addEventListener("click", () => {
+    console.log("Send klik");
+    form?.classList.remove("grid");
+    form?.classList.add("hidden");
+    thanks?.classList.remove("hidden");
   });
 
   // OVERLAY SCRIPT DESKTOP

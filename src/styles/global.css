@@ -39,17 +39,11 @@
   --color-lime-75: #72b803;
   --color-lime-90: #456d06;
 
-  /* --color-yellow-10: ;
-  --color-yellow-25: ;
-  --color-yellow-50: ;
-  --color-yellow-75: ;
-  --color-yellow-90: ;
-
-  --color-blue-10: ;
-  --color-blue-25: ;
-  --color-blue-50: ;
-  --color-blue-75: ;
-  --color-blue-90: ; */
+  --color-red-10: #fee2e1;
+  --color-red-25: #fda5a5;
+  --color-red-50: #ef4444;
+  --color-red-75: #b91c1b;
+  --color-red-90: #7f1c1d;
 
   /****************************** TOKENS - SIZES ******************************/
   /* Radius */
@@ -91,21 +85,21 @@
   --color-background-tertiery: var(--color-cream-60);
   --color-background-glass: var(--color-cream-35);
   --color-background-succes: var(--color-green-10);
-  --color-background-warning: var(--color-red-10);
+  --color-background-error: var(--color-red-10);
 
   /* Border color */
   --color-border-primary: var(--color-cream-60);
   --color-border-secondary: var(--color-cream-20);
   --color-border-accent: var(--color-raspberry-50);
   --color-border-succes: var(--color-green-50);
-  --color-border-warning: var(--color-red-50);
+  --color-border-error: var(--color-red-50);
 
   /* Text color */
   --color-text-primary: var(--color-licorice-90);
   --color-text-secondary: var(--color-licorice-10);
   --color-text-alternate: var(--color-cream-10);
   --color-text-succes: var(--color-green-75);
-  --color-text-warning: var(--color-red-75);
+  --color-text-error: var(--color-red-75);
 
   /* Link color */
   --color-link-text: var(--color-licorice-90);
@@ -141,21 +135,21 @@
     --color-background-tertiery: var(--color-licorice-50);
     --color-background-glass: var(--color-licorice-75);
     --color-background-succes: var(--color-green-75);
-    --color-background-warning: var(--color-red-75);
+    --color-background-error: var(--color-red-75);
 
     /* Border color */
     --color-border-primary: var(--color-licorice-25);
     --color-border-secondary: var(--color-licorice-75);
     --color-border-accent: var(--color-lime-45);
     --color-border-succes: var(--color-green-50);
-    --color-border-warning: var(--color-red-50);
+    --color-border-error: var(--color-red-50);
 
     /* Text color */
     --color-text-primary: var(--color-cream-10);
     --color-text-secondary: var(--color-cream-35);
     --color-text-alternate: var(--color-licorice-90);
     --color-text-succes: var(--color-green-10);
-    --color-text-warning: var(--color-red-10);
+    --color-text-error: var(--color-red-10);
 
     /* Link color */
     --color-link-text: var(--color-cream-10);
