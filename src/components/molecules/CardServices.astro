@@ -5,12 +5,9 @@ const { data, text } = Astro.props;
 ---
 
 <article class="bg-background-secondary hover:bg-background-secondary/60 active:bg-button-secondary-background-pressed p-8 rounded-small flex flex-col @container relative">
-  <header class="flex flex-col gap-16 @xs:flex-row @xs:justify-between @xs:mb-6 lg:mb-16">
-    <GraphicIcons id="" shape={data.shape} size="medium" position="@xs:order-2" />
+  <header class="flex flex-col gap-16 @xs:flex-row @xs:justify-between @xs:items-center @xs:mb-6 lg:mb-16">
+    <GraphicIcons id="" shape={data.shape} size="services" position="@xs:order-2" />
+    <h3 class="heading-small mb-4 @xs:mb-0 text-text-primary"><a href="/build" class="after:content-[''] after:absolute after:inset-0">{data.title}</a></h3>
   </header>
-  <h3 class="heading-small mb-4 text-text-primary">{data.title}</h3>
   <p class="text-text-secondary">{data.text}</p>
-  <h1 class="text-heading-small">
-    <a href="/build" class="after:content-[''] after:absolute after:inset-0"> </a>
-  </h1>
 </article>
