@@ -18,18 +18,18 @@ if (!images[thumbnail_img]) throw new Error(`"${thumbnail_img}" does not exist i
 
 <li data-services={filters} class="grid content-start relative case-card min-w-[163px]">
   <article>
-    <header class="grid grid-cols-1 customcursor">
+    <header class="grid grid-cols-1">
       <div class="aspect-square col-start-1 row-start-1 col-span-1 rounded-small">
         <Image src={images[thumbnail_img]()} alt={`Thumbnail til ${name} showcase`} class="object-cover aspect-square rounded-small" />
       </div>
       <div class:list={[blurStyle, variantClass]}></div>
-      <div class:list={[videoStyle, variantClass]}>
-        <video muted autoplay loop class="rounded-small w-full h-auto" src={thumbnail_video}></video>
+      <div class:list={[videoStyle, variantClass]} id="video">
+        <video muted loop class="rounded-small w-full h-auto hovervideo" src={thumbnail_video}></video>
       </div>
     </header>
     <footer class="grid gap-1 mt-4">
       <h3 class="text-heading-small text-text-primary z-5">
-        <a href={`cases/${slug}`} class="after:content-[''] after:absolute after:inset-0 customcursor"> {name}</a>
+        <!-- <a href={`cases/${slug}`} class="after:content-[''] after:absolute after:inset-0"> {name}</a> -->
       </h3>
       <ul class="flex flex-wrap gap-2 text-body-tiny">
         {
@@ -41,3 +41,18 @@ if (!images[thumbnail_img]) throw new Error(`"${thumbnail_img}" does not exist i
     </footer>
   </article>
 </li>
+
+<script>
+  const videos = document.querySelectorAll(".hovervideo");
+
+  videos.forEach((video) => {
+    video.addEventListener("mouseenter", () => {
+      video.play();
+    });
+
+    video.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+</script>
