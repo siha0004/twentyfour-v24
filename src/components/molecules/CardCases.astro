@@ -52,7 +52,7 @@ if (!images[thumbnail_img]) throw new Error(`"${thumbnail_img}" does not exist i
 
     video.addEventListener("mouseleave", () => {
       video.pause();
-      video.currentTime = 0;
+      // video.currentTime = 0; Hvis video skal starte forfra hver gang
     });
   });
 </script>
