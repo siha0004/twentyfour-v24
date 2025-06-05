@@ -11,13 +11,15 @@ if (!images[img]) throw new Error(`"${img}" does not exist in glob: "src/assets/
 <li class="@container">
   <article class="grid gap-4 @3xs:grid-cols-[1fr_2fr]">
     <Image src={images[img]()} alt={`Billede af ${name}`} class="aspect-square rounded-small mb-2" />
-    <div>
-      <h3 class="text-text-primary">{name}</h3>
-      <p class="text-text-secondary text-body-tiny">{title}</p>
-    </div>
-    <ul>
-      <li class="text-body-small font-medium text-text-primary">{tel}</li>
-      <li class="text-body-small font-medium text-text-primary">{email}</li>
-    </ul>
+    <footer class="self-start grid gap-3">
+      <div>
+        <h3 class="text-text-primary">{name}</h3>
+        <p class="text-text-secondary text-body-tiny">{title}</p>
+      </div>
+      <ul>
+        <li class="text-body-small font-medium text-text-primary">{tel}</li>
+        <li class="text-body-small font-medium text-text-primary">{email}</li>
+      </ul>
+    </footer>
   </article>
 </li>
