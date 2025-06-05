@@ -1,19 +1,23 @@
 ---
+import { Image } from "astro:assets";
+
 const { data } = Astro.props;
+const { name, title, tel, email, img } = data;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
+if (!images[img]) throw new Error(`"${img}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
 ---
 
 <li class="@container">
   <article class="grid gap-4 @3xs:grid-cols-[1fr_2fr]">
-    <div class="aspect-square bg-border-accent rounded-small mb-2"></div>
-    <footer class="self-start grid gap-3">
-      <div>
-        <h3 class="text-text-primary">{data.name}</h3>
-        <p class="text-text-secondary text-body-tiny">{data.title}</p>
-      </div>
-      <ul>
-        <li class="text-body-small font-medium text-text-primary">{data.tel}</li>
-        <li class="text-body-small font-medium text-text-primary">{data.email}</li>
-      </ul>
-    </footer>
+    <Image src={images[img]()} alt={`Billede af ${name}`} class="aspect-square rounded-small mb-2" />
+    <div>
+      <h3 class="text-text-primary">{name}</h3>
+      <p class="text-text-secondary text-body-tiny">{title}</p>
+    </div>
+    <ul>
+      <li class="text-body-small font-medium text-text-primary">{tel}</li>
+      <li class="text-body-small font-medium text-text-primary">{email}</li>
+    </ul>
   </article>
 </li>
