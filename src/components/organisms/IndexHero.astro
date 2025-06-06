@@ -4,25 +4,26 @@ import GraphicIcons from "../atoms/GraphicIcons.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<section class="grid grid-cols-4 lg:grid-cols-12 grid-rows-5 lg:grid-rows-6 h-[90vh] min-h-[500px] md:max-h-[600px] lg:min-h-[600px] lg:max-h-[1000px] gap-4 p-4">
-  <article class="grid grid-cols-[subgrid] grid-rows-[subgrid] col-start-1 col-span-4 lg:col-span-9 row-start-3 row-span-2 z-10">
-    <h1 class="contents text-heading-huge text-text-primary">
-      <span class="col-start-1 col-span-2 lg:col-span-6 row-start-1 row-span-1 place-self-center">Digitalt</span>
-      <span class="col-start-2 col-span-2 lg:col-start-4 lg:col-span-6 row-start-2 row-span-1">Bureau</span>
+<section class="grid grid-cols-4 md:grid-cols-12 md:h-[90vh] md:max-h-[600px] lg:min-h-[600px] lg:max-h-[1000px] gap-4 lg:gap-6">
+  <article class="grid grid-cols-[subgrid] grid-rows-[subgrid] col-start-1 col-span-4 row-start-2 row-span-3 md:col-span-9 md:row-start-3 md:row-span-4 z-10">
+    <h1 class="contents text-heading-huge text-text-primary leading-none">
+      <span class="col-start-1 col-span-4 row-start-1 row-span-1 md:col-span-6 md:place-self-center">Digitalt</span>
+      <span class="col-start-2 col-span-4 row-start-2 row-span-1 md:col-start-4 md:col-span-6 md:row-span-1 text-right md:text-left">Bureau</span>
     </h1>
-    <p class="text-text-primary text-body-base col-start-3 col-span-2 lg:col-start-7 md:col-span-3 row-start-1 flex flex-col self-center pl-12">
+    <p class="text-text-primary text-body-base col-start-1 col-span-4 row-start-4 md:col-start-7 md:col-span-3 md:row-start-1 flex flex-col self-center lg:pl-12">
       <span class="flex items-center gap-2">
         <Icon name="logomark" role="img" aria-label="Twentyfour" class="text-body-large text-text-primary" />
         har fokus på løsninger,
       </span>
       <span>der passer til dig</span>
     </p>
+    <GraphicIcons id="square" shape="square" size="medium" position="md:col-start-2 md:col-span-2 md:row-start-2 md:row-span-2" />
   </article>
 
-  <GraphicIcons id="ring" shape="ring" size="medium" position="col-start-1 row-start-1 row-span-1 lg:col-span-2" />
-  <GraphicIcons id="flower" shape="flower" size="small" position="col-start-3 lg:col-start-10 row-start-1 place-content-end" />
-  <GraphicIcons id="butterfly" shape="butterfly" size="large" position="col-start-4 lg:col-start-11 col-span-2 row-start-2 row-span-2" />
-  <GraphicIcons id="square" shape="square" size="medium" position="col-start-1 row-start-5 lg:col-start-2 lg:col-span-2 lg:row-start-5 lg:row-span-2" />
+  <GraphicIcons id="ring" shape="ring" size="medium" position="col-start-1 row-start-1 row-span-1 md:col-span-2" />
+  <GraphicIcons id="flower" shape="flower" size="small" position="col-start-3 md:col-start-10 row-start-1 place-self-end" />
+  <GraphicIcons id="butterfly" shape="butterfly" size="large" position="col-start-4 col-span-2 row-start-2 row-span-2 md:col-start-10 md:col-span-3 md:row-start-2 md:row-span-2 md:place-self-end" />
+  <!-- <GraphicIcons id="square" shape="square" size="medium" position="col-start-1 row-start-3 xs:place-self-end md:col-start-2 md:col-span-2 md:row-start-6 md:row-spa-1" /> -->
 </section>
 
 <script>
