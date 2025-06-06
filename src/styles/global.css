@@ -109,8 +109,8 @@
 
   /* Button Primary color */
   --color-button-primary-text: var(--color-cream-10);
-  --color-button-primary-background: var(--color-raspberry-65);
-  --color-button-primary-background-hover: var(--color-raspberry-65);
+  --color-button-primary-background: var(--color-raspberry-60);
+  --color-button-primary-background-hover: var(--color-raspberry-70);
   --color-button-primary-background-pressed: var(--color-raspberry-80);
 
   /* Button Primary color */
