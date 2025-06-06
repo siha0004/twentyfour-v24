@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { buildImageLookup, getImageFromPath } from "../../utils/images.js";
 
 const { name, grid, data } = Astro.props;
 
@@ -30,24 +31,36 @@ const img2 = data.find((item) => item.img2)?.img2;
 const img3 = data.find((item) => item.img3)?.img3;
 const img4 = data.find((item) => item.img4)?.img4;
 
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}");
-if (!images[img1]) throw new Error(`"${img1}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
-if (!images[img2]) throw new Error(`"${img2}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
-if (!images[img3]) throw new Error(`"${img3}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
-if (!images[img4]) throw new Error(`"${img4}" does not exist in glob: "src/assets/images/*.{jpeg,jpg,png,gif,webp}"`);
+// Eager-importér alle billeder
+const imageImports = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}", { eager: true });
+
+// Byg lookup map
+const images = buildImageLookup(imageImports);
+
+// Hent billeder via helper
+const img1Image = getImageFromPath(img1, images);
+const img2Image = getImageFromPath(img2, images);
+const img3Image = getImageFromPath(img3, images);
+const img4Image = getImageFromPath(img4, images);
+
+// Fejl hvis billeder mangler
+if (!img1Image || !img2Image || !img3Image || !img4Image) {
+  console.error("Tilgængelige billeder:", Object.keys(images));
+  throw new Error(`Et eller flere billeder blev ikke fundet`);
+}
 ---
 
 <section class="section-main grid gap-3 sm:grid-cols-12">
   <div id="blue" class="rounded-small" class:list={[blueStyling]}>
-    <Image src={img1} width={1920} height={1080} alt={`Billede af ${name} mockup`} class="rounded-small object-cover" />
+    <Image src={img1Image} width={1920} height={1080} alt={`Billede af ${name} mockup`} class="rounded-small object-cover" />
   </div>
   <div id="red" class="rounded-small" class:list={[redStyling]}>
-    <Image src={img2} width={1920} height={1080} alt={`Billede af ${name} mock up`} class="rounded-small object-cover" />
+    <Image src={img2Image} width={1920} height={1080} alt={`Billede af ${name} mock up`} class="rounded-small object-cover" />
   </div>
   <div id="yellow" class="rounded-small" class:list={[yellowStyling]}>
-    <Image src={img3} width={1920} height={1080} alt={`Billede af ${name} designvalg`} class="rounded-small object-cover" />
+    <Image src={img3Image} width={1920} height={1080} alt={`Billede af ${name} designvalg`} class="rounded-small object-cover" />
   </div>
   <div id="green" class="rounded-small" class:list={[greenStyling]}>
-    <Image src={img4} width={1920} height={1080} alt={`Billede af et udpluk fra ${name} designsystem`} class="rounded-small object-cover" />
+    <Image src={img4Image} width={1920} height={1080} alt={`Billede af et udpluk fra ${name} designsystem`} class="rounded-small object-cover" />
   </div>
 </section>
