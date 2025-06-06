@@ -1,6 +1,7 @@
 ---
 import Link from "../atoms/Link.astro";
 import { Image } from "astro:assets";
+import { buildImageLookup, getImageFromPath } from "../../utils/images.js";
 
 const { name, data } = Astro.props;
 
@@ -16,17 +17,11 @@ console.log("Cover:", cover);
 // Importér alle billeder eager
 const imageImports = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpeg,jpg,png,gif,webp}", { eager: true });
 
-// Lav lookup objekt med filnavn som key
-const images = Object.fromEntries(
-  Object.entries(imageImports).map(([path, mod]) => {
-    const filename = path.split("/").pop();
-    return [filename, mod.default];
-  })
-);
+// Byg lookup map
+const images = buildImageLookup(imageImports);
 
-// Strip sti og slå op med filnavn
-const filename = cover.split("/").pop();
-const coverImage = images[filename];
+// Hent billeder via helper
+const coverImage = getImageFromPath(cover, images);
 
 if (!coverImage) {
   console.error(`Cover image "${cover}" not found. Available:`, Object.keys(images));
