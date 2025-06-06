@@ -77,12 +77,6 @@
   --text-heading-xlarge: clamp(3rem, 1.9565rem + 5.2174vw, 6rem);
   --text-heading-huge: clamp(3.5rem, 0.587rem + 14.5652vw, 11.875rem);
 
-  /* Grafikker */
-  /* Clamp generator https://utopia.fyi/clamp/calculator?a=390,1728,32—48 */
-
-  --text-graphic-large: clamp(7.5rem, 4.8038rem + 11.0613vw, 16.75rem);
-  --text-graphic-medium: clamp(4.5rem, 3.1155rem + 5.6801vw, 9.25rem);
-  --text-graphic-small: clamp(2rem, 1.7085rem + 1.1958vw, 3rem);
   /****************************** TOKENS - COLORS******************************/
 
   /* Background color */
@@ -204,13 +198,13 @@
   }
 
   .large {
-    width: clamp(7.5rem, 4.8038rem + 11.0613vw, 16.75rem);
+    width: clamp(3.75rem, -0.0392rem + 15.5456vw, 16.75rem);
   }
   .medium {
-    width: clamp(4.5rem, 3.1155rem + 5.6801vw, 9.25rem);
+    width: clamp(3rem, 1.1783rem + 7.4738vw, 9.25rem);
   }
   .small {
-    width: clamp(2rem, 1.7085rem + 1.1958vw, 3rem);
+    width: clamp(1.75rem, 1.3857rem + 1.4948vw, 3rem);
   }
 
   .customcursor {
