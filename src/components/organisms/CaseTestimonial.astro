@@ -7,7 +7,42 @@ const by = data.find((item) => item.by)?.by;
 
 <section class="py-32 sm:py-48 lg:py-52 border-b border-b-border-secondary grid place-content-center">
   <div class="max-w-3xl grid gap-4">
-    <p class="heading-medium text-text-primary">{quote}</p>
+    <p class="split opacity-0 heading-medium text-text-primary">{quote}</p>
     <p class="flex gap-2 before:content-['-'] text-text-secondary text-body-large">{by}</p>
   </div>
 </section>
+
+<script>
+  // Created with this codepen and some adjustments created with chatGPT
+  //codepen.io/GreenSock/pen/LEYqezo?editors=1100
+
+  https: import { gsap } from "gsap";
+  import { SplitText } from "gsap/SplitText";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(SplitText, ScrollTrigger);
+
+  document.fonts.ready.then(() => {
+    gsap.set(".split", { opacity: 1 });
+
+    const splitInstance = SplitText.create(".split", {
+      type: "words,lines",
+      linesClass: "line",
+      autoSplit: true,
+      mask: "lines",
+    });
+
+    gsap.from(splitInstance.lines, {
+      scrollTrigger: {
+        trigger: ".split",
+        start: "top 80%", // start animation when top of element hits 80% of viewport
+        toggleActions: "play none none none", // play on enter only
+      },
+      duration: 2,
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.1,
+      ease: "expo.out",
+    });
+  });
+</script>
