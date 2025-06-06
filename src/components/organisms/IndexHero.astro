@@ -17,7 +17,7 @@ import { Icon } from "astro-icon/components";
       </span>
       <span>der passer til dig</span>
     </p>
-    <GraphicIcons id="square" shape="square" size="medium" position="md:col-start-2 md:col-span-2 md:row-start-2 md:row-span-2" />
+    <GraphicIcons id="square" shape="square" size="medium" position="md:col-start-2 md:col-span-2 md:row-start-2 md:row-span-2 md:place-self-center" />
   </article>
 
   <GraphicIcons id="ring" shape="ring" size="medium" position="col-start-1 row-start-1 row-span-1 md:col-span-2" />
@@ -38,7 +38,7 @@ import { Icon } from "astro-icon/components";
       trigger: "#ring",
       start: "top", // starter når #ring rammer bunden af viewport
       end: "bottom", // slutter når #ring rammer toppen af viewport
-      scrub: 2,
+      scrub: 1.5, // Ret delay
     },
   });
 </script>
