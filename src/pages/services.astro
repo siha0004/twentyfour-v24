@@ -6,6 +6,11 @@ import MainLayout from "../layouts/MainLayout.astro";
 import SectionCases from "../components/organisms/SectionCases.astro";
 
 import services from "../data/services.json";
+import CardBlog from "../components/molecules/CardBlog.astro";
+
+import { Image } from "astro:assets";
+import interview from "../assets/images/artikel-interview.webp";
+import skitser from "../assets/images/artikel-wireframes-skitser.webp";
 
 // Fetcher data fra databasen og ligger i konstanten 'data'
 const url = import.meta.env.CASES_URL;
@@ -41,9 +46,15 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
     <article class="md:col-span-12 md:row-start-1">
       <h1 class="text-heading-tagline text-text-secondary pb-2">Proces</h1>
       <h2 class="text-heading-medium text-text-primary pb-5">Hvad skal der ske herfra?</h2>
-      <p class="text-heading-tagline text-text-secondary pb-10">Hos os får du et team, der er fast knyttet til dit projekt fra første dag. Nedenunder får du et overblik over vores proces, som vi tilpasser dit projekts omfang og behov.</p>
+      <p class="text-heading-tagline text-text-secondary pb-10 md:pb-24">Hos os får du et team, der er fast knyttet til dit projekt fra første dag. Nedenunder får du et overblik over vores proces, som vi tilpasser dit projekts omfang og behov.</p>
     </article>
     <div class="md:row-start-2 md:col-start-5 md:col-span-8"><ScrollingContainer /></div>
+  </section>
+  <section class="section-main md:grid md:grid-cols-12 md:gap-6">
+    <div class="md:col-start-2 md:col-span-5"><h1 class="heading-medium text-text-primary mb-10">Success historier</h1> <CardBlog heading="Bag kulisserne: Sådan hjalp vi Nordhus med at skabe en ny hjemmeside" image={skitser} alt="Billede af wireframe skitser" /></div>
+    <div class="md:col-start-7 md:col-span-5 md:row-start-1">
+      <CardBlog heading="Protect fortæller: En uvurderlig partner fra dag ét" image={interview} alt="Billede af en person der bliver interviewet" />
+    </div>
   </section>
   <section class="section-main"><SectionCases data={sortedData} /></section>
 </MainLayout>
