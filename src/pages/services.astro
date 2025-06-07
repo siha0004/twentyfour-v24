@@ -37,13 +37,13 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
       }
     </ul>
   </section>
-  <section class="section-main grid lg:grid-cols-12">
-    <article class="lg:col-span-12 lg:row-start-1">
+  <section class="section-main grid md:grid-cols-12">
+    <article class="md:col-span-12 md:row-start-1">
       <h1 class="text-heading-tagline text-text-secondary pb-2">Proces</h1>
       <h2 class="text-heading-medium text-text-primary pb-5">Hvad skal der ske herfra?</h2>
       <p class="text-heading-tagline text-text-secondary pb-10">Hos os får du et team, der er fast knyttet til dit projekt fra første dag. Nedenunder får du et overblik over vores proces, som vi tilpasser dit projekts omfang og behov.</p>
     </article>
-    <div class="lg:col-start-5 lg:col-span-8 lg:row-start-2"><ScrollingContainer /></div>
+    <div class="md:row-start-2 md:col-start-5 md:col-span-8"><ScrollingContainer /></div>
   </section>
   <section class="section-main"><SectionCases data={sortedData} /></section>
 </MainLayout>
