@@ -4,7 +4,7 @@ import GraphicIcons from "../atoms/GraphicIcons.astro";
 const { data, text } = Astro.props;
 ---
 
-<article class="bg-background-secondary hover:bg-background-secondary/60 active:bg-button-secondary-background-pressed p-8 rounded-small flex flex-col @container relative">
+<article class="h-full bg-background-secondary hover:bg-background-secondary/60 active:bg-button-secondary-background-pressed p-8 rounded-small flex flex-col @container relative">
   <header class="flex flex-col gap-16 @xs:flex-row @xs:justify-between @xs:items-center @xs:mb-6">
     <GraphicIcons id="" shape={data.shape} size="services" position="@xs:order-2" />
     <h3 class="heading-small mb-4 @xs:mb-0 text-text-primary"><a href="/build" class="after:content-[''] after:absolute after:inset-0">{data.title}</a></h3>
