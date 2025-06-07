@@ -7,7 +7,7 @@ import ContactOverlay from "../components/organisms/ContactOverlay.astro";
 import ContactOverlayDesk from "../components/organisms/ContactOverlayDesk.astro";
 import ModeToggle from "../components/molecules/ModeToggle.astro";
 
-const { title = "Twentyfour", theme } = Astro.props;
+const { title = "Twentyfour", metaDescription } = Astro.props;
 ---
 
 <html lang="en">
@@ -16,6 +16,8 @@ const { title = "Twentyfour", theme } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
+    <meta name="author" content="Multimediedesignstuderende afgangprojekt 4. semester, Sif Melkane Hansen og Trine Ekberg Larsen" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
