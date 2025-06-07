@@ -4,9 +4,9 @@ const { data } = Astro.props;
 
 <li class="border-t-border-primary border-t @container">
   <article class="mt-4">
-    <footer class="@2xl:flex @2xl:flex-row gap-4 items-start">
+    <footer class="@2xl:flex @2xl:flex-row gap-4 items-start justify-between">
       <p class="text-text-secondary text-body-small @xs:pb-2">{data.step}</p>
-      <h3 class="heading-small text-text-primary w-[363px] @xs:pb-4">{data.heading}</h3>
+      <h3 class="heading-small text-text-primary min-w-[189px] max-w-[363px] @xs:pb-4">{data.heading}</h3>
       <p class="text-text-secondary text-body-small min-w-[300px] max-w-[484px]">{data.description}</p>
     </footer>
   </article>
