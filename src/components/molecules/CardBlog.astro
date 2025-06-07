@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+
+const { heading, image = "", alt } = Astro.props;
+---
+
+<li class="grid content-start relative min-w-[163px]">
+  <a href="/build" class="customcursor">
+    <article>
+      <header>
+        <div class="aspect-[3/2]">
+          <Image src={image} class="object-cover aspect-[3/2] w-full rounded-small" alt={alt} />
+        </div>
+        <footer class="mt-4">
+          <h3 class="text-text-secondary text-body-base pb-4">Artikel</h3>
+          <p class="text-text-primary heading-small">{heading}</p>
+        </footer>
+      </header>
+    </article>
+  </a>
+</li>
