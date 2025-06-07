@@ -32,7 +32,11 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
     <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
       {
         services.map((service) => {
-          return <CardServices data={service} />;
+          return (
+            <li>
+              <CardServices data={service} />;
+            </li>
+          );
         })
       }
     </ul>
