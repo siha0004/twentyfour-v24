@@ -41,7 +41,7 @@ const sortedData = [...caseData].sort((a, b) => a.name.localeCompare(b.name, "da
 
       <!-- SEARCH BAR -->
       <div id="searchContainer" class="flex items-center glass max-w-3xs px-4 py-2 border border-border-primary rounded-full transition-all duration-300 lg:max-w-full lg:flex-row" data-search-container>
-        <button id="toggleSearch" class="lg:hidden">
+        <button id="toggleSearch" aria-label="Søg" class="lg:hidden">
           <Icon name="search" class="text-text-primary text-body-xlarge" />
         </button>
 
