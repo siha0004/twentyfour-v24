@@ -1,14 +1,11 @@
 ---
 import Link from "../atoms/Link.astro";
-import Button from "../atoms/Button.astro";
 import { Icon } from "astro-icon/components";
-import ModeToggle from "../molecules/ModeToggle.astro";
 import GraphicIcons from "../atoms/GraphicIcons.astro";
 ---
 
-<!-- pb-7 pt-16 sm:py-24 lg:pt-32 -->
 <footer class="grid grid-cols-4 lg:grid-cols-12 lg:grid-rows-[repeat(5,_auto)] px-[max(1rem,_50%_-_var(--content-width)_/_2)] relative lg:gap-x-6">
-  <article class="pb-10 lg:py-20 col-start-1 row-start-2 lg:row-span-3 lg:row-start-2 z-10">
+  <article class="pb-10 lg:pb-20 col-start-1 row-start-2 lg:row-span-3 lg:row-start-2 z-10">
     <h1 class="heading-xlarge text-text-primary pb-10 lg:pb-20 text-balance">Skal vi tage en snak om dit næste projekt?</h1>
     <ul class="heading-small text-text-primary">
       <li class="pb-4 lg:pb-7"><a href="tel:+45 42 41 61 60">+45 42 41 61 60</a></li>
@@ -17,7 +14,7 @@ import GraphicIcons from "../atoms/GraphicIcons.astro";
   </article>
 
   <section class="grid gap-7 col-start-1 row-start-5 row-span-1 z-10">
-    <section class="self-end lg:flex lg:gap-4 lg:justify-between border-t border-t-border-secondary pt-6 pb-6 lg:pt-7 z-10">
+    <div class="lg:flex lg:gap-4 lg:justify-between border-t border-t-border-secondary pt-6 pb-6 lg:pt-7 z-10">
       <div class="lg:flex pb-6 lg:pb-0 lg:gap-4">
         <Icon name="logo" class="text-text-primary text-heading-small" />
         <ul class="lg:flex lg:flex-row lg:gap-4">
@@ -33,10 +30,10 @@ import GraphicIcons from "../atoms/GraphicIcons.astro";
           </li>
         </ul>
       </div>
-    </section>
+    </div>
   </section>
 
-  <GraphicIcons id="" shape="fan" size="medium" position="col-start-3 col-span-1 row-start-1 row-span-1 lg:col-start-4" />
-  <GraphicIcons id="" shape="butterfly" size="small" position="col-start-3 col-span-1 row-start-3 row-span-1 lg:col-start-9 lg:row-start-4" />
-  <GraphicIcons id="" shape="square" size="large" position="col-start-4 col-span-1 row-span-2 row-start-4 lg:col-start-10 lg:col-span-3 lg:row-start-4 lg:place-self-end" />
+  <!-- <GraphicIcons id="" shape="fan" size="medium" position="col-start-3 col-span-1 row-start-1 row-span-1 lg:col-start-4" /> -->
+  <!-- <GraphicIcons id="" shape="butterfly" size="small" position="col-start-3 col-span-1 row-start-3 row-span-1 lg:col-start-9 lg:row-start-4" /> -->
+  <!-- <GraphicIcons id="" shape="square" size="large" position="col-start-4 col-span-1 row-span-2 row-start-4 lg:col-start-10 lg:col-span-3 lg:row-start-4 lg:place-self-end" /> -->
 </footer>
