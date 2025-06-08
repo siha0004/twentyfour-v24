@@ -50,9 +50,10 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
     </article>
     <div class="md:row-start-2 md:col-start-5 md:col-span-8"><ScrollingContainer /></div>
   </section>
-  <section class="section-main md:grid md:grid-cols-12 md:gap-6">
-    <div class="md:col-start-2 md:col-span-5"><h1 class="heading-medium text-text-primary mb-10">Success historier</h1> <CardBlog heading="Bag kulisserne: Sådan hjalp vi Nordhus med at skabe en ny hjemmeside" image={skitser} alt="Billede af wireframe skitser" /></div>
-    <div class="md:col-start-7 md:col-span-5 md:row-start-1">
+  <section class="section-main grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-6">
+    <div class="col-start-1 col-span-4 row-start-1 md:col-start-2 md:col-span-5 md:row-start-1 md:row-span-1"><h1 class="heading-medium text-text-primary mb-6 md:mb-10">Success historier</h1></div>
+    <div class="col-start-1 col-span-2 row-start-2 md:col-start-2 md:col-span-5"><CardBlog heading="Bag kulisserne: Sådan hjalp vi Nordhus med at skabe en ny hjemmeside" image={skitser} alt="Billede af wireframe skitser" /></div>
+    <div class="col-start-3 col-span-2 row-start-2 md:col-start-7 md:col-span-5 md:row-start-1 md:row-span-2">
       <CardBlog heading="Protect fortæller: En uvurderlig partner fra dag ét" image={interview} alt="Billede af en person der bliver interviewet" />
     </div>
   </section>
