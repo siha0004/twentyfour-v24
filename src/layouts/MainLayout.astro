@@ -28,11 +28,12 @@ const { title = "Twentyfour", metaDescription } = Astro.props;
     <Header />
     <main>
       <slot />
-      <section class="sticky bottom-0 z-20 flex justify-end items-center py-6 lg:pb-7">
+      <section class="sticky bottom-0 z-20 flex justify-end items-center p-6 lg:pb-7">
         <ModeToggle />
       </section>
     </main>
     <Footer />
+
     <ContactOverlay />
     <ContactOverlayDesk />
   </body>
