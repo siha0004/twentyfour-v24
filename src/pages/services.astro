@@ -6,6 +6,11 @@ import MainLayout from "../layouts/MainLayout.astro";
 import SectionCases from "../components/organisms/SectionCases.astro";
 
 import services from "../data/services.json";
+import CardBlog from "../components/molecules/CardBlog.astro";
+
+import { Image } from "astro:assets";
+import interview from "../assets/images/artikel-interview.webp";
+import skitser from "../assets/images/artikel-wireframes-skitser.webp";
 
 // Fetcher data fra databasen og ligger i konstanten 'data'
 const url = import.meta.env.CASES_URL;
@@ -22,11 +27,7 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
 ---
 
 <MainLayout title="Services | Twentyfour" metaDescription="Et overblik over Twentyfours services inden for digitale løsning. Her beskrives processen når man arbejder med Twentyfour og man kan læse mere om deres cases og succeshistorier med andre kunder. ">
-  <Hero
-    variant="default"
-    title="Services"
-    text="Vi skaber skræddersyede digitale løsninger, der passer til dine behov. Med over 10 års erfaring og et tværfagligt team, der kombinerer teknologi, design og problemløsning, hjælper vi dig med at udvikle løsninger, der skaber værdi for både din forretning og brugerne. Vi tilbyder full-service løsninger, fra idé til implementering."
-  />
+  <Hero variant="default" title="Services" text="Vi skaber skræddersyede digitale løsninger, der passer til dine behov. Med over 10 års erfaring og et tværfagligt team, der kombinerer teknologi, design og problemløsning, hjælper vi dig med at udvikle løsninger, der skaber værdi for både din forretning og brugerne. Vi tilbyder full-service løsninger, fra idé til implementering." />
 
   <section id="services" class="section-main">
     <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -41,12 +42,20 @@ const sortedData = [...caseData].sort((a, b) => a.id - b.id);
       }
     </ul>
   </section>
-  <section class="full-bleed section-main">
-    <article class="place-content-center">
+  <section class="section-main grid md:grid-cols-12">
+    <article class="md:col-span-12 md:row-start-1">
       <h1 class="text-heading-tagline text-text-secondary pb-2">Proces</h1>
-      <h2 class="text-heading-small text-text-primary pb-10">Hvad skal der ske herfra?</h2>
+      <h2 class="text-heading-medium text-text-primary pb-5">Hvad skal der ske herfra?</h2>
+      <p class="text-heading-tagline text-text-secondary pb-10 md:pb-24">Hos os får du et team, der er fast knyttet til dit projekt fra første dag. Nedenunder får du et overblik over vores proces, som vi tilpasser dit projekts omfang og behov.</p>
     </article>
-    <ScrollingContainer />
+    <div class="md:row-start-2 md:col-start-5 md:col-span-8"><ScrollingContainer /></div>
+  </section>
+  <section class="section-main grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-6">
+    <div class="col-start-1 col-span-4 row-start-1 md:col-start-2 md:col-span-5 md:row-start-1 md:row-span-1"><h1 class="heading-medium text-text-primary mb-6 md:mb-10">Success historier</h1></div>
+    <div class="col-start-1 col-span-2 row-start-2 md:col-start-2 md:col-span-5"><CardBlog heading="Bag kulisserne: Sådan hjalp vi Nordhus med at skabe en ny hjemmeside" image={skitser} alt="Billede af wireframe skitser" /></div>
+    <div class="col-start-3 col-span-2 row-start-2 md:col-start-7 md:col-span-5 md:row-start-1 md:row-span-2">
+      <CardBlog heading="Protect fortæller: En uvurderlig partner fra dag ét" image={interview} alt="Billede af en person der bliver interviewet" />
+    </div>
   </section>
   <section class="section-main"><SectionCases data={sortedData} /></section>
 </MainLayout>
