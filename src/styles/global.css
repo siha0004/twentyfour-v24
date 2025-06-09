@@ -237,6 +237,9 @@
   .customcursor {
     cursor: url("/CustomCursorCase.svg"), pointer;
   }
+  .customcursor-blog {
+    cursor: url("/CustomCursorBlog.svg"), pointer;
+  }
 }
 
 /* Text styles */
